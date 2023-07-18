@@ -348,14 +348,16 @@ function getLowerCornerPosition(
 			}
 		}
 		else {
-			const firstScrollableEditableElementAncestor = findClosestScrollableAncestor( focusedEditableElement );
+			const scrollableAncestors = getScrollableAncestors( focusedEditableElement );
 
-			if ( firstScrollableEditableElementAncestor ) {
-				const firstScrollableEditableElementAncestorRect = new Rect( firstScrollableEditableElementAncestor );
+			for ( const scrollableEditableElementAncestor of scrollableAncestors ) {
+				if ( scrollableEditableElementAncestor ) {
+					const scrollableEditableElementAncestorRect = new Rect( scrollableEditableElementAncestor );
 
-				// The watermark cannot be positioned in this corner because the corner is "not visible enough".
-				if ( visibleEditableElementRect.bottom + balloonRect.height / 2 > firstScrollableEditableElementAncestorRect.bottom ) {
-					return OFF_THE_SCREEN_POSITION;
+					// The watermark cannot be positioned in this corner because the corner is "not visible enough".
+					if ( visibleEditableElementRect.bottom + balloonRect.height / 2 > scrollableEditableElementAncestorRect.bottom ) {
+						return OFF_THE_SCREEN_POSITION;
+					}
 				}
 			}
 		}
@@ -369,6 +371,25 @@ function getLowerCornerPosition(
 			}
 		};
 	};
+}
+
+// Returns array of all scrollable ancestors of given HTMLElement.
+export function getScrollableAncestors( focusedEditableElement: HTMLElement ): Array<HTMLElement> {
+	let currentElement = focusedEditableElement;
+	const scrollableAncestors = [];
+
+	while ( currentElement ) {
+		const closestScrollableAncestor = findClosestScrollableAncestor( currentElement );
+
+		if ( !closestScrollableAncestor || closestScrollableAncestor.tagName === 'BODY' ) {
+			break;
+		}
+
+		scrollableAncestors.push( closestScrollableAncestor );
+		currentElement = closestScrollableAncestor;
+	}
+
+	return scrollableAncestors;
 }
 
 function getNormalizedConfig( editor: Editor ): PoweredByConfig {

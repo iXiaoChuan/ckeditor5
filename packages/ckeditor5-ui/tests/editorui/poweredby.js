@@ -8,6 +8,7 @@
 import { Editor } from '@ckeditor/ckeditor5-core';
 import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
 import EditorUI from '../../src/editorui/editorui';
+import { getScrollableAncestors } from '../../src/editorui/poweredby';
 import { BalloonPanelView } from '../../src';
 import View from '../../src/view';
 
@@ -1013,6 +1014,27 @@ describe( 'PoweredBy', () => {
 		expect( elementFromPoint.classList.contains( 'ck-button__label' ) ).to.be.true;
 
 		await editor.destroy();
+	} );
+
+	describe( 'getScrollableAncestors()', () => {
+		it( 'should return all scrollable ancestors', () => {
+			const domRoot = editor.editing.view.getDomRoot();
+			const parentWithOverflow = document.createElement( 'div' );
+			const parentWithOverflow2 = document.createElement( 'div' );
+			parentWithOverflow.style.overflow = 'scroll';
+			parentWithOverflow2.style.overflow = 'scroll';
+
+			document.body.appendChild( parentWithOverflow2 );
+			parentWithOverflow2.appendChild( parentWithOverflow );
+			parentWithOverflow.appendChild( domRoot );
+
+			const scrollableAncestors = getScrollableAncestors( domRoot );
+
+			expect( scrollableAncestors ).to.have.ordered.members( [ parentWithOverflow, parentWithOverflow2 ] );
+
+			parentWithOverflow.remove();
+			parentWithOverflow2.remove();
+		} );
 	} );
 
 	async function createEditor( element, config = { plugins: [ SourceEditing ] } ) {
