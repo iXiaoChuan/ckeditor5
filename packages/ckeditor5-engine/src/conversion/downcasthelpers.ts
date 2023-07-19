@@ -56,6 +56,7 @@ import {
 } from '@ckeditor/ckeditor5-utils';
 
 import { cloneDeep } from 'lodash-es';
+import RootElement from "../model/rootelement";
 
 /**
  * Downcast conversion helper functions.
@@ -991,6 +992,14 @@ export function convertRangeSelection() {
 			return;
 		}
 
+		const modelRoot = selection.getFirstPosition()!.root as RootElement;
+
+		// Don't convert selection if it is in a model root that does not have a view root (for now this is only the graveyard root).
+		// Note that the view selection should be cleared at this moment.
+		if ( !conversionApi.mapper.toViewElement( modelRoot ) ) {
+			return;
+		}
+
 		const viewRanges: Array<ViewRange> = [];
 
 		for ( const range of selection.getRanges() ) {
@@ -1040,6 +1049,14 @@ export function convertCollapsedSelection() {
 		}
 
 		if ( !conversionApi.consumable.consume( selection, 'selection' ) ) {
+			return;
+		}
+
+		const modelRoot = selection.getFirstPosition()!.root as RootElement;
+
+		// Don't convert selection if it is in a model root that does not have a view root (for now this is only the graveyard root).
+		// Note that the view selection should be cleared at this moment.
+		if ( !conversionApi.mapper.toViewElement( modelRoot ) ) {
 			return;
 		}
 
@@ -1098,6 +1115,7 @@ export function clearAttributes() {
 				}
 			}
 		}
+
 		viewWriter.setSelection( null );
 	};
 }
