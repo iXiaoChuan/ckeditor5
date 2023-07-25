@@ -1,7 +1,10 @@
 {
   "name": "ckeditor5",
   "version": "38.1.1",
-  "description": "The development environment of CKEditor 5 - the best browser-based rich text editor.",
+  "description": "The super editor of CKEditor5.",
+  "publishConfig": {
+      "registry": "https://npm.thinkingdata.cn:3443/"
+  },
   "private": true,
   "keywords": [
     "ckeditor",
@@ -149,13 +152,13 @@
     "node": ">=16.0.0",
     "npm": ">=5.7.1"
   },
-  "author": "CKSource (http://cksource.com/)",
+  "author": "iXiaoChuan",
   "license": "GPL-2.0-or-later",
-  "homepage": "https://ckeditor.com/ckeditor-5",
-  "bugs": "https://github.com/ckeditor/ckeditor5/issues",
+  "homepage": "",
+  "bugs": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ckeditor/ckeditor5.git"
+    "url": "http://10.27.249.150:8888/zhangjianchuan/ckeditor-super.git"
   },
   "scripts": {
     "postinstall": "node ./scripts/postinstall.js",

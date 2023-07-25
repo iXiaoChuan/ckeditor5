@@ -3,37 +3,63 @@
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 import { ClassicEditor as ClassicEditorBase } from '@ckeditor/ckeditor5-editor-classic';
+import { BalloonEditor as BalloonEditorBase } from '@ckeditor/ckeditor5-editor-balloon';
 import { Essentials } from '@ckeditor/ckeditor5-essentials';
-import { UploadAdapter } from '@ckeditor/ckeditor5-adapter-ckfinder';
 import { Autoformat } from '@ckeditor/ckeditor5-autoformat';
-import { Bold, Italic } from '@ckeditor/ckeditor5-basic-styles';
-import { BlockQuote } from '@ckeditor/ckeditor5-block-quote';
-import { CKBox } from '@ckeditor/ckeditor5-ckbox';
-import { CKFinder } from '@ckeditor/ckeditor5-ckfinder';
-import { EasyImage } from '@ckeditor/ckeditor5-easy-image';
+import { Bold, Italic, Strikethrough, Underline } from '@ckeditor/ckeditor5-basic-styles';
 import { Heading } from '@ckeditor/ckeditor5-heading';
-import { Image, ImageCaption, ImageStyle, ImageToolbar, ImageUpload, PictureEditing } from '@ckeditor/ckeditor5-image';
-import { Indent } from '@ckeditor/ckeditor5-indent';
+import { AutoImage, Image, ImageInsert, ImageResize, ImageStyle, ImageToolbar, ImageUpload } from '@ckeditor/ckeditor5-image';
+import { Indent, IndentBlock } from '@ckeditor/ckeditor5-indent';
 import { Link } from '@ckeditor/ckeditor5-link';
-import { List } from '@ckeditor/ckeditor5-list';
-import { MediaEmbed } from '@ckeditor/ckeditor5-media-embed';
+import { List, TodoList } from '@ckeditor/ckeditor5-list';
 import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
-import { PasteFromOffice } from '@ckeditor/ckeditor5-paste-from-office';
-import { Table, TableToolbar } from '@ckeditor/ckeditor5-table';
 import { TextTransformation } from '@ckeditor/ckeditor5-typing';
-import { CloudServices } from '@ckeditor/ckeditor5-cloud-services';
-export default class ClassicEditor extends ClassicEditorBase {
-    static builtinPlugins: (typeof TextTransformation | typeof Essentials | typeof UploadAdapter | typeof Paragraph | typeof Heading | typeof Autoformat | typeof Bold | typeof Italic | typeof BlockQuote | typeof CloudServices | typeof Image | typeof ImageCaption | typeof ImageStyle | typeof ImageToolbar | typeof ImageUpload | typeof CKBox | typeof CKFinder | typeof EasyImage | typeof Indent | typeof Link | typeof List | typeof MediaEmbed | typeof PasteFromOffice | typeof Table | typeof TableToolbar | typeof PictureEditing)[];
+import { Alignment } from '@ckeditor/ckeditor5-alignment';
+import { FontBackgroundColor, FontColor, FontSize } from '@ckeditor/ckeditor5-font';
+import { Highlight } from '@ckeditor/ckeditor5-highlight';
+import { HorizontalLine } from '@ckeditor/ckeditor5-horizontal-line';
+declare class ClassicEditor extends ClassicEditorBase {
+    static builtinPlugins: (typeof TextTransformation | typeof Essentials | typeof Paragraph | typeof Heading | typeof Autoformat | typeof Bold | typeof Italic | typeof Strikethrough | typeof Underline | typeof AutoImage | typeof Image | typeof ImageInsert | typeof ImageResize | typeof ImageStyle | typeof ImageToolbar | typeof ImageUpload | typeof Indent | typeof IndentBlock | typeof Link | typeof List | typeof TodoList | typeof Alignment | typeof FontBackgroundColor | typeof FontColor | typeof FontSize | typeof Highlight | typeof HorizontalLine)[];
     static defaultConfig: {
         toolbar: {
-            items: string[];
-        };
-        image: {
-            toolbar: string[];
-        };
-        table: {
-            contentToolbar: string[];
+            items: (string | {
+                label: string;
+                icon: string;
+                items: string[];
+            })[];
+            shouldNotGroupWhenFull: boolean;
         };
         language: string;
+        image: {
+            inset: {
+                integrations: string[];
+            };
+            toolbar: string[];
+        };
     };
 }
+declare class BalloonEditor extends BalloonEditorBase {
+    static builtinPlugins: (typeof TextTransformation | typeof Essentials | typeof Paragraph | typeof Heading | typeof Autoformat | typeof Bold | typeof Italic | typeof Strikethrough | typeof Underline | typeof AutoImage | typeof Image | typeof ImageInsert | typeof ImageResize | typeof ImageStyle | typeof ImageToolbar | typeof ImageUpload | typeof Indent | typeof IndentBlock | typeof Link | typeof List | typeof TodoList | typeof Alignment | typeof FontBackgroundColor | typeof FontColor | typeof FontSize | typeof Highlight | typeof HorizontalLine)[];
+    static defaultConfig: {
+        toolbar: {
+            items: (string | {
+                label: string;
+                icon: string;
+                items: string[];
+            })[];
+            shouldNotGroupWhenFull: boolean;
+        };
+        language: string;
+        image: {
+            inset: {
+                integrations: string[];
+            };
+            toolbar: string[];
+        };
+    };
+}
+declare const _default: {
+    ClassicEditor: typeof ClassicEditor;
+    BalloonEditor: typeof BalloonEditor;
+};
+export default _default;

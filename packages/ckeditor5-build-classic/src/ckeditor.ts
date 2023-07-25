@@ -5,85 +5,124 @@
 
 // The editor creator to use.
 import { ClassicEditor as ClassicEditorBase } from '@ckeditor/ckeditor5-editor-classic';
+import { BalloonEditor as BalloonEditorBase } from '@ckeditor/ckeditor5-editor-balloon';
 
 import { Essentials } from '@ckeditor/ckeditor5-essentials';
-import { UploadAdapter } from '@ckeditor/ckeditor5-adapter-ckfinder';
 import { Autoformat } from '@ckeditor/ckeditor5-autoformat';
-import { Bold, Italic } from '@ckeditor/ckeditor5-basic-styles';
-import { BlockQuote } from '@ckeditor/ckeditor5-block-quote';
-import { CKBox } from '@ckeditor/ckeditor5-ckbox';
-import { CKFinder } from '@ckeditor/ckeditor5-ckfinder';
-import { EasyImage } from '@ckeditor/ckeditor5-easy-image';
+import { Bold, Italic, Strikethrough, Underline } from '@ckeditor/ckeditor5-basic-styles';
 import { Heading } from '@ckeditor/ckeditor5-heading';
-import { Image, ImageCaption, ImageStyle, ImageToolbar, ImageUpload, PictureEditing } from '@ckeditor/ckeditor5-image';
-import { Indent } from '@ckeditor/ckeditor5-indent';
+import {
+	AutoImage,
+	Image,
+	ImageInsert,
+	ImageResize,
+	ImageStyle,
+	ImageToolbar,
+	ImageUpload
+} from '@ckeditor/ckeditor5-image';
+import { Indent, IndentBlock } from '@ckeditor/ckeditor5-indent';
 import { Link } from '@ckeditor/ckeditor5-link';
-import { List } from '@ckeditor/ckeditor5-list';
-import { MediaEmbed } from '@ckeditor/ckeditor5-media-embed';
+import { List, TodoList } from '@ckeditor/ckeditor5-list';
 import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
-import { PasteFromOffice } from '@ckeditor/ckeditor5-paste-from-office';
-import { Table, TableToolbar } from '@ckeditor/ckeditor5-table';
 import { TextTransformation } from '@ckeditor/ckeditor5-typing';
-import { CloudServices } from '@ckeditor/ckeditor5-cloud-services';
+import { Alignment } from '@ckeditor/ckeditor5-alignment';
+import { FontBackgroundColor, FontColor, FontSize } from '@ckeditor/ckeditor5-font';
+import { Highlight } from '@ckeditor/ckeditor5-highlight';
+import { HorizontalLine } from '@ckeditor/ckeditor5-horizontal-line';
 
-export default class ClassicEditor extends ClassicEditorBase {
-	public static override builtinPlugins = [
-		Essentials,
-		UploadAdapter,
-		Autoformat,
-		Bold,
-		Italic,
-		BlockQuote,
-		CKBox,
-		CKFinder,
-		CloudServices,
-		EasyImage,
-		Heading,
-		Image,
-		ImageCaption,
-		ImageStyle,
-		ImageToolbar,
-		ImageUpload,
-		Indent,
-		Link,
-		List,
-		MediaEmbed,
-		Paragraph,
-		PasteFromOffice,
-		PictureEditing,
-		Table,
-		TableToolbar,
-		TextTransformation
-	];
+// General plug-ins
+const plugins = [
+	Alignment,
+	AutoImage,
+	Autoformat,
+	Bold,
+	Essentials,
+	FontBackgroundColor,
+	FontColor,
+	FontSize,
+	Heading,
+	Highlight,
+	HorizontalLine,
+	Image,
+	ImageInsert,
+	ImageResize,
+	ImageStyle,
+	ImageToolbar,
+	ImageUpload,
+	Indent,
+	IndentBlock,
+	Italic,
+	Link,
+	List,
+	Paragraph,
+	Strikethrough,
+	TextTransformation,
+	TodoList,
+	Underline
+];
 
-	public static override defaultConfig = {
-		toolbar: {
-			items: [
-				'undo', 'redo',
-				'|', 'heading',
-				'|', 'bold', 'italic',
-				'|', 'link', 'uploadImage', 'insertTable', 'blockQuote', 'mediaEmbed',
-				'|', 'bulletedList', 'numberedList', 'outdent', 'indent'
+// General configuration
+const configs = {
+	toolbar: {
+		items: [
+			'undo', // **撤销
+			'redo', // **重做
+			'|',
+			'heading', // **标题
+			'|',
+			'bold', // **加粗
+			'italic', // **斜体
+			'strikethrough', // **删除线
+			'underline', // **下划线
+			'|',
+			'fontColor', // **字体颜色
+			'fontBackgroundColor', // **字体背景颜色
+			// 'fontSize', // **字体大小
+			// 'highlight', // **高亮
+			'|',
+			'bulletedList', // **无序列表
+			'numberedList', // **有序列表
+			'|',
+			'outdent', // **减少缩进
+			'indent', // **增加缩进
+			'alignment', //* *对齐方式
+			'|',
+			{
+				label: 'More basic styles',
+				icon: 'threeVerticalDots',
+				items: [
+					'imageInsert', // 插入图片
+					'link' // 插入链接
+				]
+			}
+		],
+		shouldNotGroupWhenFull: true
+	},
+	language: 'en',
+	image: {
+		inset: {
+			integrations: [
+				'insertImageViaUrl' // **使用链接插入图片
 			]
 		},
-		image: {
-			toolbar: [
-				'imageStyle:inline',
-				'imageStyle:block',
-				'imageStyle:side',
-				'|',
-				'toggleImageCaption',
-				'imageTextAlternative'
-			]
-		},
-		table: {
-			contentToolbar: [
-				'tableColumn',
-				'tableRow',
-				'mergeTableCells'
-			]
-		},
-		// This value must be kept in sync with the language defined in webpack.config.js.
-		language: 'en'
-	};
+		toolbar: [
+			'imageStyle:inline', // **图片选中样式  inline
+			'imageStyle:block', // **图片选中样式  block
+			'imageStyle:side' // **图片选中样式 side
+		]
+	}
+};
+
+// 经典编辑器
+class ClassicEditor extends ClassicEditorBase {
+	public static override builtinPlugins = plugins;
+	public static override defaultConfig = configs;
 }
+
+// 气泡编辑器
+class BalloonEditor extends BalloonEditorBase {
+	public static override builtinPlugins = plugins;
+	public static override defaultConfig = configs;
+}
+
+export default { ClassicEditor, BalloonEditor };
