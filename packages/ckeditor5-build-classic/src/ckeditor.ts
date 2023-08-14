@@ -9,7 +9,12 @@ import { BalloonEditor as BalloonEditorBase } from '@ckeditor/ckeditor5-editor-b
 
 import { Essentials } from '@ckeditor/ckeditor5-essentials';
 import { Autoformat } from '@ckeditor/ckeditor5-autoformat';
-import { Bold, Italic, Strikethrough, Underline } from '@ckeditor/ckeditor5-basic-styles';
+import {
+	Bold,
+	Italic
+	// Strikethrough,
+	// Underline,
+} from '@ckeditor/ckeditor5-basic-styles';
 import { Heading } from '@ckeditor/ckeditor5-heading';
 import {
 	AutoImage,
@@ -26,7 +31,11 @@ import { List, TodoList } from '@ckeditor/ckeditor5-list';
 import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
 import { TextTransformation } from '@ckeditor/ckeditor5-typing';
 import { Alignment } from '@ckeditor/ckeditor5-alignment';
-import { FontBackgroundColor, FontColor, FontSize } from '@ckeditor/ckeditor5-font';
+import {
+	FontBackgroundColor,
+	FontColor
+	// FontSize
+} from '@ckeditor/ckeditor5-font';
 import { Highlight } from '@ckeditor/ckeditor5-highlight';
 import { HorizontalLine } from '@ckeditor/ckeditor5-horizontal-line';
 
@@ -39,7 +48,7 @@ const plugins = [
 	Essentials,
 	FontBackgroundColor,
 	FontColor,
-	FontSize,
+	// FontSize,
 	Heading,
 	Highlight,
 	HorizontalLine,
@@ -55,10 +64,10 @@ const plugins = [
 	Link,
 	List,
 	Paragraph,
-	Strikethrough,
+	// Strikethrough,
 	TextTransformation,
-	TodoList,
-	Underline
+	TodoList
+	// Underline
 ];
 
 // General configuration
@@ -72,33 +81,32 @@ const configs = {
 			'|',
 			'bold', // **加粗
 			'italic', // **斜体
-			'strikethrough', // **删除线
-			'underline', // **下划线
-			'|',
+			// 'strikethrough', // **删除线
+			// 'underline', // **下划线
 			'fontColor', // **字体颜色
 			'fontBackgroundColor', // **字体背景颜色
 			// 'fontSize', // **字体大小
 			// 'highlight', // **高亮
 			'|',
+			'alignment', //* *对齐方式
 			'bulletedList', // **无序列表
 			'numberedList', // **有序列表
-			'|',
-			'outdent', // **减少缩进
-			'indent', // **增加缩进
-			'alignment', //* *对齐方式
-			'|',
-			{
-				label: 'More basic styles',
-				icon: 'threeVerticalDots',
-				items: [
-					'imageInsert', // 插入图片
-					'link' // 插入链接
-				]
-			}
+			// 'outdent', // **减少缩进
+			// 'indent', // **增加缩进
+			'link' // 插入链接
+			// {
+			// 	label: 'More basic styles',
+			// 	icon: 'threeVerticalDots',
+			// 	items: [
+			// 		'imageInsert', // 插入图片
+			// 		'link' // 插入链接
+			// 	]
+			// }
 		],
 		shouldNotGroupWhenFull: true
 	},
 	language: 'en',
+	// placeholder: '输入文本内容',
 	image: {
 		inset: {
 			integrations: [

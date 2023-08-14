@@ -6,7 +6,7 @@ import { ClassicEditor as ClassicEditorBase } from '@ckeditor/ckeditor5-editor-c
 import { BalloonEditor as BalloonEditorBase } from '@ckeditor/ckeditor5-editor-balloon';
 import { Essentials } from '@ckeditor/ckeditor5-essentials';
 import { Autoformat } from '@ckeditor/ckeditor5-autoformat';
-import { Bold, Italic, Strikethrough, Underline } from '@ckeditor/ckeditor5-basic-styles';
+import { Bold, Italic } from '@ckeditor/ckeditor5-basic-styles';
 import { Heading } from '@ckeditor/ckeditor5-heading';
 import { AutoImage, Image, ImageInsert, ImageResize, ImageStyle, ImageToolbar, ImageUpload } from '@ckeditor/ckeditor5-image';
 import { Indent, IndentBlock } from '@ckeditor/ckeditor5-indent';
@@ -15,18 +15,14 @@ import { List, TodoList } from '@ckeditor/ckeditor5-list';
 import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
 import { TextTransformation } from '@ckeditor/ckeditor5-typing';
 import { Alignment } from '@ckeditor/ckeditor5-alignment';
-import { FontBackgroundColor, FontColor, FontSize } from '@ckeditor/ckeditor5-font';
+import { FontBackgroundColor, FontColor } from '@ckeditor/ckeditor5-font';
 import { Highlight } from '@ckeditor/ckeditor5-highlight';
 import { HorizontalLine } from '@ckeditor/ckeditor5-horizontal-line';
 declare class ClassicEditor extends ClassicEditorBase {
-    static builtinPlugins: (typeof TextTransformation | typeof Essentials | typeof Paragraph | typeof Heading | typeof Autoformat | typeof Bold | typeof Italic | typeof Strikethrough | typeof Underline | typeof AutoImage | typeof Image | typeof ImageInsert | typeof ImageResize | typeof ImageStyle | typeof ImageToolbar | typeof ImageUpload | typeof Indent | typeof IndentBlock | typeof Link | typeof List | typeof TodoList | typeof Alignment | typeof FontBackgroundColor | typeof FontColor | typeof FontSize | typeof Highlight | typeof HorizontalLine)[];
+    static builtinPlugins: (typeof TextTransformation | typeof Essentials | typeof Paragraph | typeof Heading | typeof Autoformat | typeof Bold | typeof Italic | typeof AutoImage | typeof Image | typeof ImageInsert | typeof ImageResize | typeof ImageStyle | typeof ImageToolbar | typeof ImageUpload | typeof Indent | typeof IndentBlock | typeof Link | typeof List | typeof TodoList | typeof Alignment | typeof FontBackgroundColor | typeof FontColor | typeof Highlight | typeof HorizontalLine)[];
     static defaultConfig: {
         toolbar: {
-            items: (string | {
-                label: string;
-                icon: string;
-                items: string[];
-            })[];
+            items: string[];
             shouldNotGroupWhenFull: boolean;
         };
         language: string;
@@ -39,14 +35,10 @@ declare class ClassicEditor extends ClassicEditorBase {
     };
 }
 declare class BalloonEditor extends BalloonEditorBase {
-    static builtinPlugins: (typeof TextTransformation | typeof Essentials | typeof Paragraph | typeof Heading | typeof Autoformat | typeof Bold | typeof Italic | typeof Strikethrough | typeof Underline | typeof AutoImage | typeof Image | typeof ImageInsert | typeof ImageResize | typeof ImageStyle | typeof ImageToolbar | typeof ImageUpload | typeof Indent | typeof IndentBlock | typeof Link | typeof List | typeof TodoList | typeof Alignment | typeof FontBackgroundColor | typeof FontColor | typeof FontSize | typeof Highlight | typeof HorizontalLine)[];
+    static builtinPlugins: (typeof TextTransformation | typeof Essentials | typeof Paragraph | typeof Heading | typeof Autoformat | typeof Bold | typeof Italic | typeof AutoImage | typeof Image | typeof ImageInsert | typeof ImageResize | typeof ImageStyle | typeof ImageToolbar | typeof ImageUpload | typeof Indent | typeof IndentBlock | typeof Link | typeof List | typeof TodoList | typeof Alignment | typeof FontBackgroundColor | typeof FontColor | typeof Highlight | typeof HorizontalLine)[];
     static defaultConfig: {
         toolbar: {
-            items: (string | {
-                label: string;
-                icon: string;
-                items: string[];
-            })[];
+            items: string[];
             shouldNotGroupWhenFull: boolean;
         };
         language: string;
