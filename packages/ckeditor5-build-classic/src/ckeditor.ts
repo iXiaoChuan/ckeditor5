@@ -72,6 +72,7 @@ const plugins = [
 
 // General configuration
 const configs = {
+	language: 'en',
 	toolbar: {
 		items: [
 			'undo', // **撤销
@@ -105,8 +106,6 @@ const configs = {
 		],
 		shouldNotGroupWhenFull: true
 	},
-	language: 'en',
-	// placeholder: '输入文本内容',
 	image: {
 		inset: {
 			integrations: [
@@ -118,6 +117,138 @@ const configs = {
 			'imageStyle:block', // **图片选中样式  block
 			'imageStyle:side' // **图片选中样式 side
 		]
+	},
+	fontColor: {
+		colors: [
+			{
+				color: '#2E2E2E',
+				label: ''
+			},
+			{
+				color: '#454545',
+				label: ''
+			},
+			{
+				color: '#7E7F80',
+				label: ''
+			},
+			{
+				color: '#B3B3B3',
+				label: ''
+			},
+			{
+				color: '#B3B3B3',
+				label: ''
+			},
+			{
+				color: '#FC554F',
+				label: ''
+			},
+			{
+				color: '#F9597C',
+				label: ''
+			},
+			{
+				color: '#FFA31D',
+				label: ''
+			},
+			{
+				color: '#FFD762',
+				label: ''
+			},
+			{
+				color: '#48F0BB',
+				label: ''
+			},
+			{
+				color: '#34CFDA',
+				label: ''
+			},
+			{
+				color: '#3583EF',
+				label: ''
+			},
+			{
+				color: '#8034FA',
+				label: ''
+			},
+			{
+				color: '#B54DE6',
+				label: ''
+			},
+			{
+				color: '#FA67D1',
+				label: ''
+			}
+		],
+		columns: 5,
+		documentColors: 0
+	},
+	fontBackgroundColor: {
+		colors: [
+			{
+				color: '#2E2E2E',
+				label: ''
+			},
+			{
+				color: '#454545',
+				label: ''
+			},
+			{
+				color: '#7E7F80',
+				label: ''
+			},
+			{
+				color: '#B3B3B3',
+				label: ''
+			},
+			{
+				color: '#FFFFFF',
+				label: ''
+			},
+			{
+				color: '#FC8F8B',
+				label: ''
+			},
+			{
+				color: '#F995AB',
+				label: ''
+			},
+			{
+				color: '#FFCC82',
+				label: ''
+			},
+			{
+				color: '#FFDF83',
+				label: ''
+			},
+			{
+				color: '#90F0D2',
+				label: ''
+			},
+			{
+				color: '#78D3DA',
+				label: ''
+			},
+			{
+				color: '#83B1EF',
+				label: ''
+			},
+			{
+				color: '#B589FA',
+				label: ''
+			},
+			{
+				color: '#D0A1E6',
+				label: ''
+			},
+			{
+				color: '#FAAFF8',
+				label: ''
+			}
+		],
+		columns: 5,
+		documentColors: 0
 	}
 };
 

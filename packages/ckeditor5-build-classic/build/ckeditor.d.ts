@@ -21,32 +21,64 @@ import { HorizontalLine } from '@ckeditor/ckeditor5-horizontal-line';
 declare class ClassicEditor extends ClassicEditorBase {
     static builtinPlugins: (typeof TextTransformation | typeof Essentials | typeof Paragraph | typeof Heading | typeof Autoformat | typeof Bold | typeof Italic | typeof AutoImage | typeof Image | typeof ImageInsert | typeof ImageResize | typeof ImageStyle | typeof ImageToolbar | typeof ImageUpload | typeof Indent | typeof IndentBlock | typeof Link | typeof List | typeof TodoList | typeof Alignment | typeof FontBackgroundColor | typeof FontColor | typeof Highlight | typeof HorizontalLine)[];
     static defaultConfig: {
+        language: string;
         toolbar: {
             items: string[];
             shouldNotGroupWhenFull: boolean;
         };
-        language: string;
         image: {
             inset: {
                 integrations: string[];
             };
             toolbar: string[];
+        };
+        fontColor: {
+            colors: {
+                color: string;
+                label: string;
+            }[];
+            columns: number;
+            documentColors: number;
+        };
+        fontBackgroundColor: {
+            colors: {
+                color: string;
+                label: string;
+            }[];
+            columns: number;
+            documentColors: number;
         };
     };
 }
 declare class BalloonEditor extends BalloonEditorBase {
     static builtinPlugins: (typeof TextTransformation | typeof Essentials | typeof Paragraph | typeof Heading | typeof Autoformat | typeof Bold | typeof Italic | typeof AutoImage | typeof Image | typeof ImageInsert | typeof ImageResize | typeof ImageStyle | typeof ImageToolbar | typeof ImageUpload | typeof Indent | typeof IndentBlock | typeof Link | typeof List | typeof TodoList | typeof Alignment | typeof FontBackgroundColor | typeof FontColor | typeof Highlight | typeof HorizontalLine)[];
     static defaultConfig: {
+        language: string;
         toolbar: {
             items: string[];
             shouldNotGroupWhenFull: boolean;
         };
-        language: string;
         image: {
             inset: {
                 integrations: string[];
             };
             toolbar: string[];
+        };
+        fontColor: {
+            colors: {
+                color: string;
+                label: string;
+            }[];
+            columns: number;
+            documentColors: number;
+        };
+        fontBackgroundColor: {
+            colors: {
+                color: string;
+                label: string;
+            }[];
+            columns: number;
+            documentColors: number;
         };
     };
 }
