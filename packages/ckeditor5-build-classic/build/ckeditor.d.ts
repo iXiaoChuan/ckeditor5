@@ -33,18 +33,28 @@ declare class ClassicEditor extends ClassicEditorBase {
             toolbar: string[];
         };
         fontColor: {
-            colors: {
+            colors: ({
                 color: string;
                 label: string;
-            }[];
+                hasBorder?: undefined;
+            } | {
+                color: string;
+                label: string;
+                hasBorder: boolean;
+            })[];
             columns: number;
             documentColors: number;
         };
         fontBackgroundColor: {
-            colors: {
+            colors: ({
                 color: string;
                 label: string;
-            }[];
+                hasBorder?: undefined;
+            } | {
+                color: string;
+                label: string;
+                hasBorder: boolean;
+            })[];
             columns: number;
             documentColors: number;
         };
@@ -65,18 +75,28 @@ declare class BalloonEditor extends BalloonEditorBase {
             toolbar: string[];
         };
         fontColor: {
-            colors: {
+            colors: ({
                 color: string;
                 label: string;
-            }[];
+                hasBorder?: undefined;
+            } | {
+                color: string;
+                label: string;
+                hasBorder: boolean;
+            })[];
             columns: number;
             documentColors: number;
         };
         fontBackgroundColor: {
-            colors: {
+            colors: ({
                 color: string;
                 label: string;
-            }[];
+                hasBorder?: undefined;
+            } | {
+                color: string;
+                label: string;
+                hasBorder: boolean;
+            })[];
             columns: number;
             documentColors: number;
         };

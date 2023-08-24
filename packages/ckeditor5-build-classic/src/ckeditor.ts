@@ -122,63 +122,64 @@ const configs = {
 		colors: [
 			{
 				color: '#2E2E2E',
-				label: ''
+				label: '#2E2E2E'
 			},
 			{
 				color: '#454545',
-				label: ''
+				label: '#454545'
 			},
 			{
 				color: '#7E7F80',
-				label: ''
+				label: '#7E7F80'
 			},
 			{
 				color: '#B3B3B3',
-				label: ''
+				label: '#B3B3B3'
 			},
 			{
-				color: '#B3B3B3',
-				label: ''
+				color: '#FFFFFF',
+				label: '#FFFFFF',
+				hasBorder: true
 			},
 			{
 				color: '#FC554F',
-				label: ''
+				label: '#FC554F'
 			},
 			{
 				color: '#F9597C',
-				label: ''
+				label: '#F9597C'
 			},
 			{
 				color: '#FFA31D',
-				label: ''
+				label: '#FFA31D'
 			},
 			{
 				color: '#FFD762',
-				label: ''
+				label: '#FFD762'
 			},
 			{
 				color: '#48F0BB',
-				label: ''
+				label: '#48F0BB'
 			},
 			{
 				color: '#34CFDA',
-				label: ''
+				label: '#34CFDA'
 			},
 			{
 				color: '#3583EF',
-				label: ''
+				label: '#3583EF'
 			},
 			{
 				color: '#8034FA',
-				label: ''
+				label: '#8034FA'
 			},
 			{
 				color: '#B54DE6',
-				label: ''
+				label: '#B54DE6'
 			},
 			{
 				color: '#FA67D1',
-				label: ''
+				label: '#FA67D1'
 			}
 		],
 		columns: 5,
@@ -188,63 +189,64 @@ const configs = {
 		colors: [
 			{
 				color: '#2E2E2E',
-				label: ''
+				label: '#2E2E2E'
 			},
 			{
 				color: '#454545',
-				label: ''
+				label: '#454545'
 			},
 			{
 				color: '#7E7F80',
-				label: ''
+				label: '#7E7F80'
 			},
 			{
 				color: '#B3B3B3',
-				label: ''
+				label: '#B3B3B3'
 			},
 			{
 				color: '#FFFFFF',
-				label: ''
+				label: '#FFFFFF',
+				hasBorder: true
 			},
 			{
 				color: '#FC8F8B',
-				label: ''
+				label: '#FC8F8B'
 			},
 			{
 				color: '#F995AB',
-				label: ''
+				label: '#F995AB'
 			},
 			{
 				color: '#FFCC82',
-				label: ''
+				label: '#FFCC82'
 			},
 			{
 				color: '#FFDF83',
-				label: ''
+				label: '#FFDF83'
 			},
 			{
 				color: '#90F0D2',
-				label: ''
+				label: '#90F0D2'
 			},
 			{
 				color: '#78D3DA',
-				label: ''
+				label: '#78D3DA'
 			},
 			{
 				color: '#83B1EF',
-				label: ''
+				label: '#83B1EF'
 			},
 			{
 				color: '#B589FA',
-				label: ''
+				label: '#B589FA'
 			},
 			{
 				color: '#D0A1E6',
-				label: ''
+				label: '#D0A1E6'
 			},
 			{
 				color: '#FAAFF8',
-				label: ''
+				label: '#FAAFF8'
 			}
 		],
 		columns: 5,
