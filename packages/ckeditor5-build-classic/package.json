@@ -1,6 +1,6 @@
 {
   "name": "@tant/ckeditor5-build-super",
-  "version": "38.1.6",
+  "version": "38.1.7",
   "description": "The super editor of CKEditor5.",
   "publishConfig": {
     "registry": "https://npm.thinkingdata.cn:3443/"
