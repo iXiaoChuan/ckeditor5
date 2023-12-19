@@ -4,6 +4,7 @@
  */
 import { ClassicEditor as ClassicEditorBase } from '@ckeditor/ckeditor5-editor-classic';
 import { BalloonEditor as BalloonEditorBase } from '@ckeditor/ckeditor5-editor-balloon';
+import { MediaEmbed } from '@ckeditor/ckeditor5-media-embed';
 import { Essentials } from '@ckeditor/ckeditor5-essentials';
 import { Autoformat } from '@ckeditor/ckeditor5-autoformat';
 import { Bold, Italic } from '@ckeditor/ckeditor5-basic-styles';
@@ -18,8 +19,9 @@ import { Alignment } from '@ckeditor/ckeditor5-alignment';
 import { FontBackgroundColor, FontColor } from '@ckeditor/ckeditor5-font';
 import { Highlight } from '@ckeditor/ckeditor5-highlight';
 import { HorizontalLine } from '@ckeditor/ckeditor5-horizontal-line';
+import { SimpleUploadAdapter } from '@ckeditor/ckeditor5-upload';
 declare class ClassicEditor extends ClassicEditorBase {
-    static builtinPlugins: (typeof TextTransformation | typeof Essentials | typeof Paragraph | typeof Heading | typeof Autoformat | typeof Bold | typeof Italic | typeof AutoImage | typeof Image | typeof ImageInsert | typeof ImageResize | typeof ImageStyle | typeof ImageToolbar | typeof ImageUpload | typeof Indent | typeof IndentBlock | typeof Link | typeof List | typeof TodoList | typeof Alignment | typeof FontBackgroundColor | typeof FontColor | typeof Highlight | typeof HorizontalLine)[];
+    static builtinPlugins: (typeof TextTransformation | typeof MediaEmbed | typeof Essentials | typeof Paragraph | typeof Heading | typeof Autoformat | typeof Bold | typeof Italic | typeof SimpleUploadAdapter | typeof AutoImage | typeof Image | typeof ImageInsert | typeof ImageResize | typeof ImageStyle | typeof ImageToolbar | typeof ImageUpload | typeof Indent | typeof IndentBlock | typeof Link | typeof List | typeof TodoList | typeof Alignment | typeof FontBackgroundColor | typeof FontColor | typeof Highlight | typeof HorizontalLine)[];
     static defaultConfig: {
         language: string;
         toolbar: {
@@ -31,6 +33,9 @@ declare class ClassicEditor extends ClassicEditorBase {
                 integrations: string[];
             };
             toolbar: string[];
+            upload: {
+                types: string[];
+            };
         };
         fontColor: {
             colors: ({
@@ -57,11 +62,27 @@ declare class ClassicEditor extends ClassicEditorBase {
             })[];
             columns: number;
             documentColors: number;
+        };
+        simpleUpload: {
+            uploadUrl: string;
+            withCredentials: boolean;
+            headers: {
+                'X-CSRF-TOKEN': string;
+                Authorization: string;
+            };
+        };
+        mediaEmbed: {
+            previewsInData: boolean;
+            providers: {
+                name: string;
+                url: string;
+                html: (data: any) => any;
+            }[];
         };
     };
 }
 declare class BalloonEditor extends BalloonEditorBase {
-    static builtinPlugins: (typeof TextTransformation | typeof Essentials | typeof Paragraph | typeof Heading | typeof Autoformat | typeof Bold | typeof Italic | typeof AutoImage | typeof Image | typeof ImageInsert | typeof ImageResize | typeof ImageStyle | typeof ImageToolbar | typeof ImageUpload | typeof Indent | typeof IndentBlock | typeof Link | typeof List | typeof TodoList | typeof Alignment | typeof FontBackgroundColor | typeof FontColor | typeof Highlight | typeof HorizontalLine)[];
+    static builtinPlugins: (typeof TextTransformation | typeof MediaEmbed | typeof Essentials | typeof Paragraph | typeof Heading | typeof Autoformat | typeof Bold | typeof Italic | typeof SimpleUploadAdapter | typeof AutoImage | typeof Image | typeof ImageInsert | typeof ImageResize | typeof ImageStyle | typeof ImageToolbar | typeof ImageUpload | typeof Indent | typeof IndentBlock | typeof Link | typeof List | typeof TodoList | typeof Alignment | typeof FontBackgroundColor | typeof FontColor | typeof Highlight | typeof HorizontalLine)[];
     static defaultConfig: {
         language: string;
         toolbar: {
@@ -73,6 +94,9 @@ declare class BalloonEditor extends BalloonEditorBase {
                 integrations: string[];
             };
             toolbar: string[];
+            upload: {
+                types: string[];
+            };
         };
         fontColor: {
             colors: ({
@@ -99,6 +123,22 @@ declare class BalloonEditor extends BalloonEditorBase {
             })[];
             columns: number;
             documentColors: number;
+        };
+        simpleUpload: {
+            uploadUrl: string;
+            withCredentials: boolean;
+            headers: {
+                'X-CSRF-TOKEN': string;
+                Authorization: string;
+            };
+        };
+        mediaEmbed: {
+            previewsInData: boolean;
+            providers: {
+                name: string;
+                url: string;
+                html: (data: any) => any;
+            }[];
         };
     };
 }

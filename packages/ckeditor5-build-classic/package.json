@@ -1,6 +1,6 @@
 {
   "name": "@tant/ckeditor5-build-super",
-  "version": "38.1.1-ta.1",
+  "version": "38.1.1-ta.2",
   "description": "The super editor of CKEditor5.",
   "publishConfig": {
     "registry": "https://npm.thinkingdata.cn:3443/"
@@ -63,7 +63,6 @@
     "directory": "packages/ckeditor5-build-classic"
   },
   "scripts": {
-    "build": "webpack --mode production",
-    "postbuild": "tsc -p ./tsconfig.types.json"
+    "build": "webpack --mode production"
   }
 }

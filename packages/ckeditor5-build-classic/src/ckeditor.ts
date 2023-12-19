@@ -7,6 +7,7 @@
 import { ClassicEditor as ClassicEditorBase } from '@ckeditor/ckeditor5-editor-classic';
 import { BalloonEditor as BalloonEditorBase } from '@ckeditor/ckeditor5-editor-balloon';
 
+import { MediaEmbed } from '@ckeditor/ckeditor5-media-embed';
 import { Essentials } from '@ckeditor/ckeditor5-essentials';
 import { Autoformat } from '@ckeditor/ckeditor5-autoformat';
 import {
@@ -38,6 +39,11 @@ import {
 } from '@ckeditor/ckeditor5-font';
 import { Highlight } from '@ckeditor/ckeditor5-highlight';
 import { HorizontalLine } from '@ckeditor/ckeditor5-horizontal-line';
+// import { SimpleUploadAdapter } from '@ckeditor/ckeditor5-upload';
+import CustomUploadAdapter from '../custom-plugins/UploadAdapter/customuploadadapter';
+
+const API_KEY = 'bb815c85c4fd535a377a15';
+const IFRAME_SRC = '//cdn.iframe.ly/api/iframe';
 
 // General plug-ins
 const plugins = [
@@ -66,8 +72,11 @@ const plugins = [
 	Paragraph,
 	// Strikethrough,
 	TextTransformation,
-	TodoList
-	// Underline
+	TodoList,
+	// Underline,
+	// SimpleUploadAdapter,
+	CustomUploadAdapter,
+	MediaEmbed
 ];
 
 // General configuration
@@ -94,7 +103,8 @@ const configs = {
 			'numberedList', // **有序列表
 			// 'outdent', // **减少缩进
 			// 'indent', // **增加缩进
-			'link' // 插入链接
+			'link', // 插入链接
+			'imageInsert' // 插入图片
 			// {
 			// 	label: 'More basic styles',
 			// 	icon: 'threeVerticalDots',
@@ -116,7 +126,10 @@ const configs = {
 			'imageStyle:inline', // **图片选中样式  inline
 			'imageStyle:block', // **图片选中样式  block
 			'imageStyle:side' // **图片选中样式 side
-		]
+		],
+		upload: {
+			types: [ 'jpg', 'jpeg', 'png', 'gif' ] // **默认支持 'jpeg', 'png', 'gif', 'bmp', 'webp', 'tiff' 需要后端支持新增的支持类型
+		}
 	},
 	fontColor: {
 		colors: [
@@ -251,7 +264,46 @@ const configs = {
 		],
 		columns: 5,
 		documentColors: 0
+	},
+	fontFamily: {
+		options: [
+			'default'
+		]
+	},
+	mediaEmbed: {
+		previewsInData: true,
+		providers: [
+			{
+				// hint: this is just for previews. Get actual HTML codes by making API calls from your CMS
+				name: 'Bilibili',
+				// Match all URLs or just the ones you need:
+				url: /^https:\/\/www\.bilibili\.com.+/,
+				html: ( match: any ): string => {
+					const url = match[ 0 ];
+					const iframeUrl = IFRAME_SRC + '?app=1&api_key=' + API_KEY + '&url=' + encodeURIComponent( url );
+					return (
+						'<div class="iframely-embed"' +
+						' style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.25%;">' +
+						'<div class="iframely-responsive">' +
+						`<iframe src="${ iframeUrl }" ` +
+						'frameborder="0" allow="autoplay; encrypted-media"' +
+						' allowfullscreen style="top: 0; left: 0; width: 100%; height: 100%; position: absolute; border: 0;">' +
+						'</iframe>' +
+						'</div>' +
+						'</div>'
+					);
+				}
+			}
+		]
 	}
+	// **这个配置项需要传参,放到业务层处理了
+	// simpleUpload: {
+	// 	uploadUrl: 'http://localhost:10010/api/v2/upload', // https://sm.ms/api/v2/upload
+	// 	withCredentials: false,
+	// 	headers: {
+	// 		'Authorization': '29AvJy6e3zOm7CwS51PENBfRLdlnXisa'
+	// 	}
+	// },
 };
 
 // 经典编辑器
