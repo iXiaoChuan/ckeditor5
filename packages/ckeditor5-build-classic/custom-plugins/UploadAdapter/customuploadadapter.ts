@@ -4,11 +4,12 @@
  */
 
 import { Plugin } from '@ckeditor/ckeditor5-core';
-import { FileRepository, type UploadResponse, type FileLoader, type UploadAdapter } from '@ckeditor/ckeditor5-upload';
-import { logWarning } from '@ckeditor/ckeditor5-utils';
+import { type FileLoader, FileRepository, type UploadAdapter, type UploadResponse } from '@ckeditor/ckeditor5-upload';
 
 interface SimpleUploadConfig {
 	uploadUrl: string;
+	baseOrigin?: string;
+	body?: Record<string, any>;
 	headers?: Record<string, string>;
 	withCredentials?: boolean;
 }
@@ -30,7 +31,7 @@ export default class SimpleUploadAdapter extends Plugin {
 		}
 
 		if ( !options.uploadUrl ) {
-			logWarning( 'simple-upload-adapter-missing-uploadurl' );
+			console.warn( '=====ZJC=====上传url缺失.' );
 			return;
 		}
 
@@ -79,23 +80,22 @@ class Adapter implements UploadAdapter {
 	): void {
 		const xhr = this.xhr!;
 		const loader = this.loader;
-		const genericErrorText = `Couldn't upload file: ${ file.name }.`;
+		const options = this.options;
+		const genericErrorText = `上传图片失败: ${ file.name }.`;
 
 		xhr.addEventListener( 'error', () => reject( genericErrorText ) );
 		xhr.addEventListener( 'abort', () => reject() );
 		xhr.addEventListener( 'load', () => {
 			const response = xhr.response;
 
-			if ( !response || response.error ) {
-				return reject( response && response.error && response.error.message ? response.error.message : genericErrorText );
+			if ( !response || response?.return_code !== 0 ) {
+				return reject( response && response.return_message ? response.error.message : genericErrorText );
 			}
 
-			console.log( '=====ZJC=====response:', response );
+			const urls = {
+				default: `${ options.baseOrigin }${ response.data.downloadPath }`
+			};
 
-			const urls = response.success ? { default: response.data.url } : { default: response.images };
-
-			// Resolve with the normalized `urls` property and pass the rest of the response
-			// to allow customizing the behavior of features relying on the upload adapters.
 			resolve( {
 				...response,
 				urls
@@ -113,26 +113,23 @@ class Adapter implements UploadAdapter {
 	}
 
 	private _sendRequest( file: File ): void {
-		// Set headers if specified.
+		// Headers
 		const headers = this.options.headers || {};
-
-		// Use the withCredentials flag if specified.
-		const withCredentials = this.options.withCredentials || false;
-
 		for ( const headerName of Object.keys( headers ) ) {
 			this.xhr!.setRequestHeader( headerName, headers[ headerName ] );
 		}
 
-		this.xhr!.withCredentials = withCredentials;
+		this.xhr!.withCredentials = this.options.withCredentials || false;
 
-		// Prepare the form data.
+		// Bodys
 		const data = new FormData();
+		data.append( 'file', file );
 
-		// ZJC_2023/11/30: 修改上传参数相关,适配上传接口
-		data.append( 'smfile', file );
-		data.append( 'format', 'json' );
+		const body = this.options.body || {};
+		for ( const bodyParameter of Object.keys( body ) ) {
+			data.append( bodyParameter, body[ bodyParameter ] );
+		}
 
-		// Send the request.
 		this.xhr!.send( data );
 	}
 }

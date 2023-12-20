@@ -296,14 +296,14 @@ const configs = {
 			}
 		]
 	}
-	// **这个配置项需要传参,放到业务层处理了
+	// // **这个配置项需要传参,放到业务层处理了
 	// simpleUpload: {
-	// 	uploadUrl: 'http://localhost:10010/api/v2/upload', // https://sm.ms/api/v2/upload
+	// 	uploadUrl: 'https://sm.ms/api/v2/upload', // https://sm.ms/api/v2/upload
 	// 	withCredentials: false,
 	// 	headers: {
 	// 		'Authorization': '29AvJy6e3zOm7CwS51PENBfRLdlnXisa'
 	// 	}
-	// },
+	// }
 };
 
 // 经典编辑器
