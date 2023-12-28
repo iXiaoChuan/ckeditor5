@@ -88,7 +88,6 @@ const configs = {
 			'redo', // **重做
 			'|',
 			'heading', // **标题
-			'|',
 			'bold', // **加粗
 			'italic', // **斜体
 			// 'strikethrough', // **删除线

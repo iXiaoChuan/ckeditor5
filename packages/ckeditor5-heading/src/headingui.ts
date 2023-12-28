@@ -7,7 +7,7 @@
  * @module heading/headingui
  */
 
-import { Plugin, type Command } from 'ckeditor5/src/core';
+import { type Command, Plugin } from 'ckeditor5/src/core';
 import {
 	Model,
 	createDropdown,
@@ -20,6 +20,14 @@ import type { ParagraphCommand } from 'ckeditor5/src/paragraph';
 
 import { getLocalizedOptions } from './utils';
 import type HeadingCommand from './headingcommand';
+
+import iconHeading1 from '../theme/icons/heading1.svg';
+import iconHeading2 from '../theme/icons/heading2.svg';
+import iconHeading3 from '../theme/icons/heading3.svg';
+import iconHeading4 from '../theme/icons/heading4.svg';
+import iconHeading5 from '../theme/icons/heading5.svg';
+import iconHeading6 from '../theme/icons/heading6.svg';
+import paragraph from '../theme/icons/paragraph.svg';
 
 import '../theme/heading.css';
 
@@ -41,7 +49,7 @@ export default class HeadingUI extends Plugin {
 		const editor = this.editor;
 		const t = editor.t;
 		const options = getLocalizedOptions( editor );
-		const defaultTitle = t( 'Choose heading' );
+		// const defaultTitle = t( 'Choose heading' );
 		const accessibleLabel = t( 'Heading' );
 
 		// Register UI component.
@@ -93,7 +101,7 @@ export default class HeadingUI extends Plugin {
 				ariaLabel: accessibleLabel,
 				ariaLabelledBy: undefined,
 				isOn: false,
-				withText: true,
+				withText: false,
 				tooltip: accessibleLabel
 			} );
 
@@ -109,19 +117,42 @@ export default class HeadingUI extends Plugin {
 				return areEnabled.some( isEnabled => isEnabled );
 			} );
 
-			dropdownView.buttonView.bind( 'label' ).to( headingCommand, 'value', paragraphCommand, 'value', ( value, para ) => {
+			// dropdownView.buttonView.bind( 'label' ).to( headingCommand, 'value', paragraphCommand, 'value', ( value, para ) => {
+			// 	const whichModel = value || para && 'paragraph';
+			//
+			// 	if ( typeof whichModel === 'boolean' ) {
+			// 		return defaultTitle;
+			// 	}
+			//
+			// 	// If none of the commands is active, display default title.
+			// 	if ( !titles[ whichModel ] ) {
+			// 		return defaultTitle;
+			// 	}
+			//
+			// 	return titles[ whichModel ];
+			// } );
+
+			dropdownView.buttonView.bind( 'icon' ).to( headingCommand, 'value', paragraphCommand, 'value', ( value, para ) => {
 				const whichModel = value || para && 'paragraph';
 
-				if ( typeof whichModel === 'boolean' ) {
-					return defaultTitle;
+				switch ( whichModel ) {
+					case 'custom-heading1':
+						return iconHeading1;
+					case 'custom-heading2':
+						return iconHeading2;
+					case 'custom-heading3':
+						return iconHeading3;
+					case 'custom-heading4':
+						return iconHeading4;
+					case 'custom-heading5':
+						return iconHeading5;
+					case 'custom-heading6':
+						return iconHeading6;
+					case 'paragraph':
+						return paragraph;
+					default:
+						return paragraph;
 				}
-
-				// If none of the commands is active, display default title.
-				if ( !titles[ whichModel ] ) {
-					return defaultTitle;
-				}
-
-				return titles[ whichModel ];
 			} );
 
 			// Execute command when an item from the dropdown is selected.
