@@ -20,7 +20,7 @@ import { Heading } from '@ckeditor/ckeditor5-heading';
 import {
 	AutoImage,
 	Image,
-	ImageInsert,
+	// ImageInsert,
 	ImageResize,
 	ImageStyle,
 	ImageToolbar,
@@ -59,7 +59,7 @@ const plugins = [
 	Highlight,
 	HorizontalLine,
 	Image,
-	ImageInsert,
+	// ImageInsert,
 	ImageResize,
 	ImageStyle,
 	ImageToolbar,
@@ -103,7 +103,8 @@ const configs = {
 			// 'outdent', // **减少缩进
 			// 'indent', // **增加缩进
 			'link', // 插入链接
-			'imageInsert' // 插入图片
+			// 'insertImage', // 插入图片
+			'uploadImage'
 			// {
 			// 	label: 'More basic styles',
 			// 	icon: 'threeVerticalDots',
@@ -118,7 +119,8 @@ const configs = {
 	image: {
 		inset: {
 			integrations: [
-				'insertImageViaUrl' // **使用链接插入图片
+				// 'insertImageViaUrl', // **使用链接插入图片
+				'upload' // **上传图片
 			]
 		},
 		toolbar: [
