@@ -104,7 +104,7 @@ const configs = {
 			// 'indent', // **增加缩进
 			'link', // 插入链接
 			// 'insertImage', // 插入图片
-			'uploadImage'
+			'uploadImage' // 上传图片
 			// {
 			// 	label: 'More basic styles',
 			// 	icon: 'threeVerticalDots',
