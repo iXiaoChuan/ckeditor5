@@ -305,6 +305,8 @@ function repositionContextualBalloon( editor: Editor, relatedElement: ViewElemen
 	const balloon: ContextualBalloon = editor.plugins.get( 'ContextualBalloon' );
 	const position = getBalloonPositionData( editor, relatedElement );
 
+	console.log( '=====ZJC=====position.', position );
+
 	balloon.updatePosition( position );
 }
 

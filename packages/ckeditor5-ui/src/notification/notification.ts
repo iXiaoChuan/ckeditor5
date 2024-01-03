@@ -35,7 +35,7 @@ export default class Notification extends ContextPlugin {
 	public init(): void {
 		// Each unhandled and not stopped `show:warning` event is displayed as a system alert.
 		this.on<NotificationShowWarningEvent>( 'show:warning', ( evt, data ) => {
-			window.alert( data.message ); // eslint-disable-line no-alert
+			( window as any )?.alertNote( data.message ); // eslint-disable-line no-alert
 		}, { priority: 'lowest' } );
 	}
 
