@@ -29,13 +29,23 @@ ClassicEditor
 				withText: true,
 				icon: false,
 				items: [ 'bulletedList', 'numberedList', 'todoList' ]
-			}
+			},
+			'|',
+			'insertImage', 'insertTable'
 		],
+		image: {
+			toolbar: [ 'imageStyle:inline', 'imageStyle:block', 'imageStyle:side',
+				'|', 'toggleImageCaption', 'imageTextAlternative', '|', 'ckboxImageEdit' ]
+		},
 		cloudServices: CS_CONFIG,
 		ui: {
 			viewportOffset: {
 				top: window.getViewportTopOffsetConfig()
 			}
+		},
+		ckbox: {
+			forceDemoLabel: true,
+			allowExternalImagesEditing: [ /^data:/, 'origin' ]
 		}
 	} )
 	.then( editor => {

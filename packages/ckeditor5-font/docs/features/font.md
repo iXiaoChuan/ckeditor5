@@ -1,5 +1,6 @@
 ---
 title: Font family, size, and color
+meta-title: Font family, size, and color | CKEditor 5 Documentation
 category: features
 ---
 
@@ -19,7 +20,7 @@ Use the toolbar dropdowns in the demo below to control the font size {@icon @cke
 
 ## Additional feature information
 
-The font styles, just like the {@link features/basic-styles basic text styles} can serve numerous purposes. Font size setting can be applied globally or to a selected part of the text only making it catch the eye of the reader. Using different font families can help differentiate between sections of the content that serve various purposes (e.g. main text and a side quotation or a recap). Different font colors can work as markers and guides just like font background colors, that stand out even more and draw attention.
+The font styles, just like the {@link features/basic-styles basic text styles}, can serve many purposes. Font size setting can be applied globally or to a selected part of the text only making it catch the eye of the reader. Using different font families can help differentiate between sections of the content that serve various purposes (like main text and a side quotation or a recap). Different font colors can work as markers and guides just like font background colors, that stand out even more and draw attention.
 
 The plugin enables the following features in the rich-text editor:
 * {@link module:font/fontfamily~FontFamily} &ndash; Allows to change the font family by applying inline `<span>` elements with a `font-family` in the `style` attribute.
@@ -430,7 +431,7 @@ ClassicEditor
 
 ## Related features
 
-Here are some more CKEditor 5 features that can help you format your content:
+Here are some more CKEditor&nbsp;5 features that can help you format your content:
 * {@link features/basic-styles Basic text styles} &ndash; The essentials, like **bold**, *italic*, and others.
 * {@link features/style Styles} &ndash; Apply pre-configured styles to existing elements in the editor content.
 * {@link features/text-alignment Text alignment} &ndash; Because it does matter whether the content is left, right, centered, or justified.
@@ -545,7 +546,7 @@ The {@link module:font/fontbackgroundcolor~FontBackgroundColor} plugin registers
 	```
 
 <info-box>
-	We recommend using the official {@link framework/development-tools#ckeditor-5-inspector CKEditor 5 inspector} for development and debugging. It will give you tons of useful information about the state of the editor such as internal data structures, selection, commands, and many more.
+	We recommend using the official {@link framework/development-tools/inspector CKEditor&nbsp;5 inspector} for development and debugging. It will give you tons of useful information about the state of the editor such as internal data structures, selection, commands, and many more.
 </info-box>
 
 ## Content compatibility

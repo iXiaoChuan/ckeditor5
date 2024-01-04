@@ -1,7 +1,7 @@
 ---
 category: features-images
 menu-title: Resizing images
-meta-title: Resizing images in CKEditor 5
+meta-title: Resizing images | CKEditor 5 Documentation
 meta-description: All about various ways of resizing images to fit the content better.
 order: 50
 modified_at: 2021-06-17
@@ -14,7 +14,7 @@ The image resize feature lets you change the width of images in your content. It
 
 ## Methods to resize images
 
-The editor offers different ways to resize images either by using "resize handles" or by using dedicated UI components &mdash; either a dropdown or standalone buttons.
+The editor offers different ways to resize images either by using "resize handles" or by using dedicated UI components &ndash; either a dropdown or standalone buttons.
 
 The {@link module:image/imageresize~ImageResize} plugin enables the four resize handles displayed over the selected image. The user can freely resize the image by dragging them. The feature can be configured to use either percentage (default) or pixel values.
 
@@ -34,11 +34,11 @@ Images can also be pre-resized using styling, as shown below (the last three ima
 	All demos in this guide only present a limited set of features for clarity. Visit the {@link examples/builds/full-featured-editor feature-rich editor example} to see more in action.
 </info-box>
 
-You can configure resizing images by handles in two different ways in the CKEditor 5 WYSIWYG editor:
+You can configure resizing images by handles in two different ways in the CKEditor&nbsp;5 WYSIWYG editor:
 
 * Either by installing the {@link module:image/imageresize~ImageResize} plugin, which contains **all** needed features (`ImageResizeEditing`, `ImageResizeHandles`, `ImageResizeButtons`) as described in the {@link features/images-resizing#installation installation} of this guide.
 
-* Or by installing the combination of {@link module:image/imageresize/imageresizeediting~ImageResizeEditing} and {@link module:image/imageresize/imageresizehandles~ImageResizeHandles} plugins, that won't load the unnecessary `ImageResizeButtons` plugin:
+* Or by installing the combination of {@link module:image/imageresize/imageresizeediting~ImageResizeEditing} and {@link module:image/imageresize/imageresizehandles~ImageResizeHandles} plugins, that will not load the unnecessary `ImageResizeButtons` plugin:
 
 ```js
 import { Image, ImageResizeEditing, ImageResizeHandles } from '@ckeditor/ckeditor5-image';
@@ -46,7 +46,7 @@ import { Image, ImageResizeEditing, ImageResizeHandles } from '@ckeditor/ckedito
 ClassicEditor
 	.create( document.querySelector( '#editor' ), {
 		plugins: [ Image, ImageResizeEditing, ImageResizeHandles, /* ... */ ],
-		// More of editor's config.
+		// More of editor's configuration.
 		// ...
 	} )
 	.then( /* ... */ )
@@ -57,7 +57,7 @@ Both ways enable resize handles by default.
 
 ### Using resize dropdown
 
-In this case, the user is able to choose from a set of predefined options. These options can be displayed in form of a dropdown in the image toolbar available after the user clicks the image.
+In this case, the user is able to choose from a set of predefined options. These options can be displayed in a form of a dropdown in the image toolbar available after the user clicks the image.
 
 To use this option, you need to [enable image resizing](#installation) and configure the available {@link module:image/imageconfig~ImageConfig#resizeOptions resize options}. Then add the dropdown to the image toolbar configuration.
 
@@ -206,7 +206,7 @@ And the `max-width` gets overridden by the following rule:
 }
 ```
 
-Another concern when styling resized images is that by default, CKEditor 5 uses `display: table` on `<figure class="image">` elements to make it take up the size of the `<img>` element inside it. Unfortunately, [browsers do not yet support using `max-width` and `width` on the same element if it is styled with `display: table`](https://stackoverflow.com/questions/4019604/chrome-safari-ignoring-max-width-in-table/14420691#14420691). Therefore, `display: block` needs to be used when the image is resized:
+Another concern when styling resized images is that by default, CKEditor&nbsp;5 uses `display: table` on `<figure class="image">` elements to make it take up the size of the `<img>` element inside it. Unfortunately, [browsers do not yet support using `max-width` and `width` on the same element if it is styled with `display: table`](https://stackoverflow.com/questions/4019604/chrome-safari-ignoring-max-width-in-table/14420691#14420691). Therefore, `display: block` needs to be used when the image is resized:
 
 ```css
 .ck-content .image.image_resized {
@@ -319,7 +319,7 @@ The {@link module:image/imageresize~ImageResize} plugin registers:
 * The {@link module:image/imageresize/resizeimagecommand~ResizeImageCommand `'resizeImage'` command} that accepts the target width.
 
 <info-box>
-	We recommend using the official {@link framework/development-tools#ckeditor-5-inspector CKEditor 5 inspector} for development and debugging. It will give you tons of useful information about the state of the editor such as internal data structures, selection, commands, and many more.
+	We recommend using the official {@link framework/development-tools/inspector CKEditor&nbsp;5 inspector} for development and debugging. It will give you tons of useful information about the state of the editor such as internal data structures, selection, commands, and many more.
 </info-box>
 
 ## Contribute

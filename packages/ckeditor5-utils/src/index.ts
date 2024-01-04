@@ -42,6 +42,7 @@ export { default as CKEditorError, logError, logWarning } from './ckeditorerror'
 
 export { default as ElementReplacer } from './elementreplacer';
 
+export { default as abortableDebounce, type AbortableFunc } from './abortabledebounce';
 export { default as count } from './count';
 export { default as compareArrays } from './comparearrays';
 export { default as createElement } from './dom/createelement';
@@ -52,6 +53,7 @@ export { default as findClosestScrollableAncestor } from './dom/findclosestscrol
 export { default as global } from './dom/global';
 export { default as getAncestors } from './dom/getancestors';
 export { default as getDataFromElement } from './dom/getdatafromelement';
+export { default as getBorderWidths } from './dom/getborderwidths';
 export { default as isText } from './dom/istext';
 export { default as Rect, type RectSource } from './dom/rect';
 export { default as ResizeObserver } from './dom/resizeobserver';
@@ -64,7 +66,7 @@ export { default as isNode } from './dom/isnode';
 export { default as isRange } from './dom/isrange';
 export { default as isValidAttributeName } from './dom/isvalidattributename';
 export { default as isVisible } from './dom/isvisible';
-export { getOptimalPosition, type Options as PositionOptions, type PositioningFunction } from './dom/position';
+export { getOptimalPosition, type Options as PositionOptions, type PositioningFunction, type Position } from './dom/position';
 export { default as remove } from './dom/remove';
 export * from './dom/scroll';
 
@@ -83,12 +85,14 @@ export { default as KeystrokeHandler } from './keystrokehandler';
 export { default as toArray, type ArrayOrItem, type ReadonlyArrayOrItem } from './toarray';
 export { default as toMap } from './tomap';
 export { default as priorities, type PriorityString } from './priorities';
+export { default as retry, exponentialDelay } from './retry';
 export { default as insertToPriorityArray } from './inserttopriorityarray';
 export { default as spliceArray } from './splicearray';
 
 export { default as uid } from './uid';
 export { default as delay, type DelayedFunc } from './delay';
 export { default as verifyLicense } from './verifylicense';
+export { default as wait } from './wait';
 export * from './unicode';
 
 export { default as version, releaseDate } from './version';

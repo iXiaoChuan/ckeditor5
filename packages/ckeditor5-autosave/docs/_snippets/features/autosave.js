@@ -22,10 +22,19 @@ document.querySelector( '#snippet-autosave-lag' ).addEventListener( 'change', ev
 ClassicEditor
 	.create( document.querySelector( '#snippet-autosave' ), {
 		cloudServices: CS_CONFIG,
+		image: {
+			toolbar: [
+				'imageStyle:inline', 'imageStyle:block', 'imageStyle:side', '|',
+				'toggleImageCaption', 'imageTextAlternative', 'ckboxImageEdit'
+			]
+		},
 		ui: {
 			viewportOffset: {
 				top: window.getViewportTopOffsetConfig()
 			}
+		},
+		ckbox: {
+			allowExternalImagesEditing: [ /^data:/, 'origin' ]
 		},
 		autosave: {
 			save( editor ) {

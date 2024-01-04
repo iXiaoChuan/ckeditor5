@@ -14,7 +14,7 @@ ClassicEditor
 			items: [
 				'undo', 'redo', '|', 'paragraph', 'heading1', 'heading2', 'heading3', 'heading4', 'heading5', 'heading6',
 				'|', 'bold', 'italic',
-				'|', 'link', 'uploadImage', 'insertTable', 'mediaEmbed',
+				'|', 'link', 'insertImage', 'insertTable', 'mediaEmbed',
 				'|', 'bulletedList', 'numberedList', 'outdent', 'indent'
 			]
 		},
@@ -29,10 +29,26 @@ ClassicEditor
 				{ model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6' }
 			]
 		},
+		image: {
+			toolbar: [
+				'imageStyle:inline',
+				'imageStyle:block',
+				'imageStyle:side',
+				'|',
+				'toggleImageCaption',
+				'imageTextAlternative',
+				'|',
+				'ckboxImageEdit'
+			]
+		},
 		ui: {
 			viewportOffset: {
 				top: window.getViewportTopOffsetConfig()
 			}
+		},
+		ckbox: {
+			allowExternalImagesEditing: [ /^data:/, 'origin' ],
+			forceDemoLabel: true
 		}
 	} )
 	.then( editor => {

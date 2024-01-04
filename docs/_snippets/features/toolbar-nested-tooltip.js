@@ -21,14 +21,22 @@ ClassicEditor
 				label: 'Inserting',
 				icon: 'plus',
 				tooltip: 'Insert media',
-				items: [ 'uploadImage', 'insertTable' ]
+				items: [ 'insertImage', 'insertTable' ]
 			}
 		],
+		image: {
+			toolbar: [ 'imageStyle:inline', 'imageStyle:block', 'imageStyle:side',
+				'|', 'toggleImageCaption', 'imageTextAlternative', '|', 'ckboxImageEdit' ]
+		},
 		cloudServices: CS_CONFIG,
 		ui: {
 			viewportOffset: {
 				top: window.getViewportTopOffsetConfig()
 			}
+		},
+		ckbox: {
+			forceDemoLabel: true,
+			allowExternalImagesEditing: [ /^data:/, 'origin' ]
 		}
 	} )
 	.then( editor => {

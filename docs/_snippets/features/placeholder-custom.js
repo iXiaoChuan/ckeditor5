@@ -11,11 +11,20 @@ ClassicEditor
 	.create( document.querySelector( '#snippet-placeholder-custom' ), {
 		cloudServices: CS_CONFIG,
 		toolbar: [
-			'undo', 'redo', 'heading',
+			'undo', 'redo', '|', 'heading',
 			'|', 'bold', 'italic',
-			'|', 'link', 'uploadImage', 'insertTable', 'mediaEmbed',
+			'|', 'link', 'insertImage', 'insertTable', 'mediaEmbed',
 			'|', 'bulletedList', 'numberedList', '|', 'outdent', 'indent'
 		],
+		image: {
+			toolbar: [
+				'imageStyle:inline', 'imageStyle:block', 'imageStyle:side', '|',
+				'toggleImageCaption', 'imageTextAlternative', '|', 'ckboxImageEdit'
+			]
+		},
+		ckbox: {
+			forceDemoLabel: true
+		},
 		ui: {
 			viewportOffset: {
 				top: window.getViewportTopOffsetConfig()

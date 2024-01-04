@@ -22,13 +22,27 @@ ClassicEditor
 				label: 'Basic styles',
 				withText: true,
 				items: [ 'bold', 'italic', 'strikethrough', 'superscript', 'subscript' ]
+			},
+			'|',
+			{
+				label: 'Inserting',
+				withText: true,
+				items: [ 'insertImage', 'insertTable' ]
 			}
 		],
+		image: {
+			toolbar: [ 'imageStyle:inline', 'imageStyle:block', 'imageStyle:side',
+				'|', 'toggleImageCaption', 'imageTextAlternative', '|', 'ckboxImageEdit' ]
+		},
 		cloudServices: CS_CONFIG,
 		ui: {
 			viewportOffset: {
 				top: window.getViewportTopOffsetConfig()
 			}
+		},
+		ckbox: {
+			forceDemoLabel: true,
+			allowExternalImagesEditing: [ /^data:/, 'origin' ]
 		}
 	} )
 	.then( editor => {

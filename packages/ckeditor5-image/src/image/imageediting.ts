@@ -8,7 +8,6 @@
  */
 
 import { Plugin } from 'ckeditor5/src/core';
-import type { ViewElement } from 'ckeditor5/src/engine';
 import ImageLoadObserver from './imageloadobserver';
 import InsertImageCommand from './insertimagecommand';
 import ReplaceImageSourceCommand from './replaceimagesourcecommand';
@@ -59,20 +58,7 @@ export default class ImageEditing extends Plugin {
 					name: 'img',
 					key: 'srcset'
 				},
-				model: {
-					key: 'srcset',
-					value: ( viewImage: ViewElement ) => {
-						const value: Record<string, string> = {
-							data: viewImage.getAttribute( 'srcset' )!
-						};
-
-						if ( viewImage.hasAttribute( 'width' ) ) {
-							value.width = viewImage.getAttribute( 'width' )!;
-						}
-
-						return value;
-					}
-				}
+				model: 'srcset'
 			} );
 
 		const insertImageCommand = new InsertImageCommand( editor );

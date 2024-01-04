@@ -1,6 +1,7 @@
 ---
 category: features
 menu-title: Text part language
+meta-title: Text part language | CKEditor 5 Documentation
 ---
 
 # Text part language
@@ -19,7 +20,7 @@ In the demo below, select a text fragment. Next, use the language toolbar dropdo
 
 ## Additional feature information
 
-The text part language feature is especially useful when your content includes text sections written in different text directions, e.g. when the whole content is written in English but includes some citations in Arabic.
+The text part language feature is especially useful when your content includes text sections written in different text directions, for example, when the whole content is in English but includes some citations in Arabic.
 
 The text part language feature implements the [WCAG 3.1.2 Language of Parts](https://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning-other-lang-id.html) specification.
 
@@ -80,7 +81,7 @@ ClassicEditor
 
 ## Related features
 
-There are other language-related CKEditor 5 features you may want to check:
+There are other language-related CKEditor&nbsp;5 features you may want to check:
 
 * {@link features/ui-language UI Language}  &ndash; Set the UI language.
 * {@link features/spelling-and-grammar-checking Spelling and grammar checking} &ndash; Employ multi-language spell check for flawless content.
@@ -100,7 +101,7 @@ editor.execute( 'textPartLanguage', { languageCode: 'es' } );
 ```
 
 <info-box>
-	We recommend using the official {@link framework/development-tools#ckeditor-5-inspector CKEditor 5 inspector} for development and debugging. It will give you tons of useful information about the state of the editor such as internal data structures, selection, commands, and many more.
+	We recommend using the official {@link framework/development-tools/inspector CKEditor&nbsp;5 inspector} for development and debugging. It will give you tons of useful information about the state of the editor such as internal data structures, selection, commands, and many more.
 </info-box>
 
 ## Contribute

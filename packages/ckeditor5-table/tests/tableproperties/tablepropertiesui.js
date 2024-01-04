@@ -283,6 +283,34 @@ describe( 'table properties', () => {
 				expect( contextualBalloon.visibleView ).to.be.null;
 			} );
 
+			it( 'should not hide if the table is selected on EditorUI#update', () => {
+				tablePropertiesButton.fire( 'execute' );
+				tablePropertiesView = tablePropertiesUI.view;
+
+				expect( contextualBalloon.visibleView ).to.equal( tablePropertiesView );
+
+				editor.model.change( writer => {
+					// Set selection in the paragraph.
+					writer.setSelection( editor.model.document.getRoot().getChild( 0 ), 'on' );
+				} );
+
+				expect( contextualBalloon.visibleView ).to.equal( tablePropertiesView );
+			} );
+
+			it( 'should not hide if the selection is in the table on EditorUI#update', () => {
+				tablePropertiesButton.fire( 'execute' );
+				tablePropertiesView = tablePropertiesUI.view;
+
+				expect( contextualBalloon.visibleView ).to.equal( tablePropertiesView );
+
+				editor.model.change( writer => {
+					// Set selection in the paragraph.
+					writer.setSelection( editor.model.document.getRoot().getNodeByPath( [ 0, 0, 0 ] ), 'in' );
+				} );
+
+				expect( contextualBalloon.visibleView ).to.equal( tablePropertiesView );
+			} );
+
 			it( 'should reposition if table is still selected on on EditorUI#update', () => {
 				tablePropertiesButton.fire( 'execute' );
 				tablePropertiesView = tablePropertiesUI.view;
@@ -875,6 +903,57 @@ describe( 'table properties', () => {
 					} );
 				} );
 			} );
+		} );
+	} );
+
+	describe( 'table properties without color picker', () => {
+		let editor, editorElement, contextualBalloon, tablePropertiesUI;
+
+		testUtils.createSinonSandbox();
+
+		beforeEach( () => {
+			editorElement = document.createElement( 'div' );
+			document.body.appendChild( editorElement );
+
+			return ClassicTestEditor
+				.create( editorElement, {
+					plugins: [ Table, TablePropertiesEditing, TablePropertiesUI, Paragraph, Undo ],
+					initialData: '<table><tr><td>foo</td></tr></table><p>bar</p>',
+					table: {
+						tableProperties: {
+							colorPicker: false
+						}
+					}
+				} )
+				.then( newEditor => {
+					editor = newEditor;
+
+					contextualBalloon = editor.plugins.get( ContextualBalloon );
+					tablePropertiesUI = editor.plugins.get( TablePropertiesUI );
+
+					// There is no point to execute BalloonPanelView attachTo and pin methods so lets override it.
+					testUtils.sinon.stub( contextualBalloon.view, 'attachTo' ).returns( {} );
+					testUtils.sinon.stub( contextualBalloon.view, 'pin' ).returns( {} );
+				} );
+		} );
+
+		afterEach( () => {
+			editorElement.remove();
+
+			return editor.destroy();
+		} );
+
+		it( 'should define table.tableProperties.colorPicker', () => {
+			expect( editor.config.get( 'table.tableProperties.colorPicker' ) ).to.be.false;
+		} );
+
+		it( 'should render dropdown without color picker', () => {
+			tablePropertiesUI._showView();
+
+			const panelView = tablePropertiesUI.view.borderColorInput.fieldView.dropdownView.panelView;
+			const colorPicker = panelView.children.get( 0 ).colorPickerFragmentView.element;
+
+			expect( colorPicker ).to.be.null;
 		} );
 	} );
 } );

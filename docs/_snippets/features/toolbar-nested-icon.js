@@ -31,7 +31,7 @@ ClassicEditor
 				// A "plus" sign icon works best for content insertion tools.
 				label: 'Insert',
 				icon: 'plus',
-				items: [ 'uploadImage', 'insertTable' ]
+				items: [ 'insertImage', 'insertTable' ]
 			},
 			'|',
 			{
@@ -42,13 +42,18 @@ ClassicEditor
 			}
 		],
 		image: {
-			toolbar: [ 'imageStyle:inline', 'imageStyle:block', 'imageStyle:side', '|', 'toggleImageCaption', 'imageTextAlternative' ]
+			toolbar: [ 'imageStyle:inline', 'imageStyle:block', 'imageStyle:side',
+				'|', 'toggleImageCaption', 'imageTextAlternative', '|', 'ckboxImageEdit' ]
 		},
 		cloudServices: CS_CONFIG,
 		ui: {
 			viewportOffset: {
 				top: window.getViewportTopOffsetConfig()
 			}
+		},
+		ckbox: {
+			forceDemoLabel: true,
+			allowExternalImagesEditing: [ /^data:/, 'origin' ]
 		}
 	} )
 	.then( editor => {

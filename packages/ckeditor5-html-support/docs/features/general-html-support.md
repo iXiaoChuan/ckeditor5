@@ -2,13 +2,14 @@
 category: features-html
 order: 20
 modified_at: 2021-10-25
+meta-title: General HTML Support | CKEditor 5 Documentation
 ---
 
 # General HTML Support
 
 {@snippet features/general-html-support-source}
 
-With the General HTML Support ("GHS") feature, developers can easily enable HTML features that are not supported by any other dedicated CKEditor 5 plugins. GHS lets you add elements, attributes, classes, and styles to the source and ensures this markup stays in the editor window and in the output.
+With the General HTML Support ("GHS") feature, developers can easily enable HTML features that are not supported by any other dedicated CKEditor&nbsp;5 plugins. GHS lets you add elements, attributes, classes, and styles to the source and ensures this markup stays in the editor window and in the output.
 
 ## Demo
 
@@ -24,24 +25,24 @@ The General HTML Support feature is configured using the `config.htmlSupport` pr
 
 ## Additional feature information
 
-Here are some examples of HTML features that can be easily enabled using General HTML Support:
+Here are some examples of HTML features that can be enabled using General HTML Support:
 
 * The `<section>`, `<article>`, and `<div>` elements.
 * The `<audio>`, `<video>`, and `<iframe>` elements.
 * The `<span>` and `<cite>` elements.
-* Some of the attributes on existing dedicated CKEditor 5 features:
-	* `data-*` and `id` attributes on e.g. `<p>` and `<h1-h6>`,
-	* `style` and `classes` on e.g. `<strong>` and `<a>`.
+* Some of the attributes on existing dedicated CKEditor&nbsp;5 features:
+	* `data-*` and `id` attributes on, for example, `<p>` and `<h1-h6>`.
+	* `style` and `classes` on, for example, `<strong>` and `<a>`.
 
-The enabled HTML features can be loaded (e.g. via `editor.setData()`), pasted, output (e.g. via `editor.getData()`), and are visible in the editing area. Such content can also be edited in the editor, although, to a limited extent. Read more about it in the [Level of support](#level-of-support) section.
+The enabled HTML features can be loaded (for example, via `editor.setData()`), pasted, output (for example, via `editor.getData()`), and are visible in the editing area. Such content can also be edited in the editor, although, to a limited extent. Read more about it in the [Level of support](#level-of-support) section.
 
 ## Level of support
 
-The difference between specific CKEditor 5 features such as {@link features/basic-styles basic styles} or {@link features/headings headings} and the HTML features enabled by GHS is that a plugin that supports a specific HTML feature provides a complete user experience for that feature, whereas GHS ensures only that such a content is accepted by the editor.
+The difference between specific CKEditor&nbsp;5 features such as {@link features/basic-styles basic styles} or {@link features/headings headings} and the HTML features enabled by GHS is that a plugin that supports a specific HTML feature provides a complete user experience for that feature, whereas GHS ensures only that such content is accepted by the editor.
 
 For instance, the dedicated {@link features/basic-styles#available-text-styles bold} feature offers a toolbar button used to make the selected text bold. Together with the {@link features/autoformat autoformatting feature}, it also allows for applying bold style to content by typing a Markdown shortcode (`**foo**`) in the editor. The {@link features/headings headings} feature offers a dropdown from which the user can choose a heading level and ensures that pressing <kbd>Enter</kbd> at the end of a heading creates a new paragraph (and not another heading).
 
-The General HTML Support does not offer any UI for the enabled features and takes only the basic semantics of a given feature into account. If you enable support for `<div>`s via GHS, the user will not be able to create `<div>`s from the editor UI. The GHS will know that a `<div>` is a container element, so it can wrap other blocks (like paragraphs) but cannot be used inline (next to e.g. a `<strong>` element). It is, in this respect, similar to the content filtering (ACF) feature from CKEditor 4 as it lets you create a set or a list of markup tags that will not be stripped.
+The General HTML Support does not offer any UI for the enabled features and takes only the basic semantics of a given feature into account. If you enable support for `<div>`s via GHS, the user will not be able to create `<div>`s from the editor UI. The GHS will know that a `<div>` is a container element, so it can wrap other blocks (like paragraphs) but cannot be used inline (next to, for example, a `<strong>` element). It is, in this respect, similar to the content filtering (ACF) feature from CKEditor 4 as it lets you create a set or a list of markup tags that will not be stripped.
 
 Therefore, GHS's main use cases would be:
 
@@ -170,15 +171,15 @@ htmlSupport: {
 
 The General HTML Support feature distinguishes several content types, each treated a bit differently:
 
-* Container elements (e.g. `<section>`, `<div>`).
-* Inline elements (e.g. `<span>`, `<a>`).
-* Object elements (e.g. `<iframe>`, `<video>`).
+* Container elements (like `<section>`, `<div>`).
+* Inline elements (like `<span>`, `<a>`).
+* Object elements (like `<iframe>`, `<video>`).
 
-The enabled elements will not just be available "anywhere" in the content, as they still need to adhere to certain rules derived from the HTML schema as well as common sense. Also, the behavior of specific types of elements in the editing area will be different. For instance, the object elements will only be selectable as a whole, and the inline elements will work the same as other formatting features supported by CKEditor 5 (e.g. bold, italic) do.
+The enabled elements will not just be available "anywhere" in the content, as they still need to adhere to certain rules derived from the HTML schema as well as common sense. Also, the behavior of specific types of elements in the editing area will be different. For instance, the object elements will only be selectable as a whole, and the inline elements will work the same as other formatting features supported by CKEditor&nbsp;5 (like bold, italic) do.
 
 ### Enabling all HTML features
 
-It might be desired to enable all HTML features in some cases, so all elements and attributes will be allowed by the editor. It could be done with a special configuration:
+Sometimes you might want to enable all HTML features, so all elements and attributes will be allowed by the editor. It could be done with a special configuration:
 
 ```js
 htmlSupport: {
@@ -194,14 +195,14 @@ htmlSupport: {
 ```
 
 <info-box>
-	Please, keep in mind that enabling all HTML features creates a security risk. It is recommended to pass a list of disallowed elements and attributes to the configuration to make sure that any malicious code will not be saved and executed in the editor.
+	Keep in mind that enabling all HTML features creates a security risk. You should pass a list of disallowed elements and attributes to the configuration to make sure that any malicious code will not be saved and executed in the editor.
 </info-box>
 
 The above configuration will work similarly to [`allowedContent: true`](/docs/ckeditor4/latest/api/CKEDITOR_config.html#cfg-allowedContent) option from CKEditor 4.
 
 ### Security
 
-When you set up the GHS to allow elements like `<script>` or attributes like `onclick`, you expose the users of your application to a possibly malicious markup &mdash; whether it is code mistakenly copied from a risky website or purposely provided by a bad actor. An example of that could be: `<div onclick="leakUserData()">`.
+When you set up the GHS to allow elements like `<script>` or attributes like `onclick`, you expose the users of your application to a possibly malicious markup &ndash; whether it is code mistakenly copied from a risky website or purposely provided by a bad actor. An example of that could be: `<div onclick="leakUserData()">`.
 
 The content inside the editor (what you see in the editing area) is filtered by default from typical content that could break the editor. However, the editor does not feature a full XSS filter. Thus, we recommend configuring GHS to enable specific HTML markup, instead of enabling all markup at once.
 
@@ -317,18 +318,18 @@ dataFilter.allowElement( 'object-block' );
 
 ## Known issues
 
-It is possible to add support for arbitrary styles, classes, and other attributes to existing CKEditor 5 features (such as paragraphs, headings, list items, etc.). Most of the existing CKEditor 5 features can already be extended this way, however, some cannot yet. This includes e.g.: the `<ul>` and `<ol>` elements of the list feature (see: [#9917](https://github.com/ckeditor/ckeditor5/issues/9917)).
+It is possible to add support for arbitrary styles, classes, and other attributes to existing CKEditor&nbsp;5 features (such as paragraphs, headings, list items, etc.). Most of the existing CKEditor&nbsp;5 features can already be extended this way, however, some cannot yet. This includes e.g.: the `<ul>` and `<ol>` elements of the list feature (see: [#9917](https://github.com/ckeditor/ckeditor5/issues/9917)).
 
 <info-box info>
 	While the GHS feature is stable, some problems with complex documents may occur if it is used together with {@link features/real-time-collaboration real-time collaboration}.
 </info-box>
 
-We are open to feedback, so if you find any issue, feel free to report it in the [main CKEditor 5 repository](https://github.com/ckeditor/ckeditor5/issues/). You can also track other [GHS-related issues](https://github.com/ckeditor/ckeditor5/issues/9856) on GitHub <!-- To be removed at some point, as the main issue is closed already -->.
+We are open to feedback, so if you find any issue, feel free to report it in the [main CKEditor&nbsp;5 repository](https://github.com/ckeditor/ckeditor5/issues/). You can also track other [GHS-related issues](https://github.com/ckeditor/ckeditor5/issues/9856) on GitHub <!-- To be removed at some point, as the main issue is closed already -->.
 
 ## Related features
 
-CKEditor 5 has other features related to HTML editing that you may want to check:
+CKEditor&nbsp;5 has other features related to HTML editing that you may want to check:
 
-* {@link features/full-page-html Full page HTML} &ndash; Allows using CKEditor 5 to edit entire HTML pages, from `<html>` to `</html>`, including the page metadata.
+* {@link features/full-page-html Full page HTML} &ndash; Allows using CKEditor&nbsp;5 to edit entire HTML pages, from `<html>` to `</html>`, including the page metadata.
 * {@link features/source-editing Source editing} &ndash; Provides the ability for viewing and editing the source of the document.
 * {@link features/html-embed HTML embed} &ndash; Allows embedding an arbitrary HTML snippet in the editor.

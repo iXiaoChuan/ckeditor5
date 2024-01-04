@@ -1,28 +1,29 @@
 ---
 category: update-guides
+meta-title: Update to version 26.x | CKEditor 5 Documentation
 menu-title: Update to v26.x
 order: 98
 ---
 
 <info-box>
-	When updating your CKEditor 5 installation, make sure **all the packages are the same version** to avoid errors.
+	When updating your CKEditor&nbsp;5 installation, make sure **all the packages are the same version** to avoid errors.
 
 	For custom builds, you may try removing the `package-lock.json` or `yarn.lock` files (if applicable) and reinstalling all packages before rebuilding the editor. For best results, make sure you use the most recent package versions.
 </info-box>
 
-# Update to CKEditor 5 v26.0.0
+# Update to CKEditor&nbsp;5 v26.0.0
 
-For the entire list of changes introduced in version 26.0.0, see the [release notes for CKEditor 5 v26.0.0](https://github.com/ckeditor/ckeditor5/releases/tag/v26.0.0).
+For the entire list of changes introduced in version 26.0.0, see the [release notes for CKEditor&nbsp;5 v26.0.0](https://github.com/ckeditor/ckeditor5/releases/tag/v26.0.0).
 
-Listed below are the most important changes that require your attention when upgrading to CKEditor 5 v26.0.0.
+Listed below are the most important changes that require your attention when upgrading to CKEditor&nbsp;5 v26.0.0.
 
 ## Soft requirements
 
-While [allowing to extend builds](https://github.com/ckeditor/ckeditor5/issues/8395) with additional plugins without rebuilding the bundle (a concept also called {@link installation/advanced/dll-builds "DLLs"}), certain sets of plugins had to be decoupled. This has lead to the introduction of the "soft requirements".
+While [allowing to extend builds](https://github.com/ckeditor/ckeditor5/issues/8395) with additional plugins without rebuilding the bundle (a concept also called {@link installation/advanced/dll-builds "DLLs"}), certain sets of plugins had to be decoupled. This has led to the introduction of the "soft requirements."
 
 Before, each plugin had its direct requirements that would be automatically loaded by the editor before the plugin is loaded. These plugins were specified in the `static get() {}` callback of a plugin class in the form of plugin constructors (dependencies).
 
-Starting from v26.0.0 not all plugins can be directly imported by other plugins. However, a plugin can define that it requires another plugin (called for example `'Foo'`) by returning a string from `static get() {}`. This tells the editor that such a plugin must be provided by the integrator (you) either prior to building (via {@link module:core/editor/editor~Editor.builtinPlugins `Editor.builtinPlugins`}) or when creating a new instance of the editor (e.g. via {@link module:core/editor/editorconfig~EditorConfig#plugins `config.plugins`}).
+Starting from v26.0.0 not all plugins can be directly imported by other plugins. However, a plugin can define that it requires another plugin (called, for example, `'Foo'`) by returning a string from `static get() {}`. This tells the editor that such a plugin must be provided by the integrator (you) either before building (via {@link module:core/editor/editor~Editor.builtinPlugins `Editor.builtinPlugins`}) or when creating a new instance of the editor (for example, via {@link module:core/editor/editorconfig~EditorConfig#plugins `config.plugins`}).
 
 Therefore, when upgrading to version 26.0.0, you may stumble upon the {@link support/error-codes#error-plugincollection-soft-required `plugincollection-soft-required`} error. This tells you that some dependencies are now missing and you need to provide them.
 
@@ -197,9 +198,9 @@ For example, a registered keystroke `Ctrl+A` will now be translated to `Cmd+A` o
 
 The naming conventions for both buttons and commands have been reviewed and unified to maintain maximum consistency and provide sane rules that match real-life cases.
 
-All buttons follow the **verb + noun** (i.e. `insertTable`, `selectAll`) or the **noun** (i.e. `bold`, `mediaEmbed`) convention.
+All buttons follow the **verb + noun** (for example, `insertTable`, `selectAll`) or the **noun** (for example, `bold`, `mediaEmbed`) convention.
 
-It was trickier for commands, because there are more possible name combinations than there are for buttons. For commands, the proper name should in most cases start with the **action** followed by the **feature** name (i.e. `checkTodoList`, `insertTable`).
+It was trickier for commands, because there are more possible name combinations than there are for buttons. For commands, the proper name should in most cases start with the **action** followed by the **feature** name (like `checkTodoList`, `insertTable`).
 
 Toolbar button name changes (before → after):
 

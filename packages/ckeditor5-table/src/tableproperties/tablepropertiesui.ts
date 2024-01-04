@@ -29,7 +29,7 @@ import {
 	lineWidthFieldValidator,
 	defaultColors
 } from '../utils/ui/table-properties';
-import { getTableWidgetAncestor } from '../utils/ui/widget';
+import { getSelectionAffectedTableWidget } from '../utils/ui/widget';
 import { getBalloonTablePositionData, repositionContextualBalloon } from '../utils/ui/contextualballoon';
 import { getNormalizedDefaultProperties, type NormalizedDefaultProperties } from '../utils/table-properties';
 import type { Batch } from 'ckeditor5/src/engine';
@@ -169,11 +169,13 @@ export default class TablePropertiesUI extends Plugin {
 		const localizedBorderColors = getLocalizedColorOptions( editor.locale, borderColorsConfig );
 		const backgroundColorsConfig = normalizeColorOptions( config.backgroundColors! );
 		const localizedBackgroundColors = getLocalizedColorOptions( editor.locale, backgroundColorsConfig );
+		const hasColorPicker = config.colorPicker !== false;
 
 		const view = new TablePropertiesView( editor.locale, {
 			borderColors: localizedBorderColors,
 			backgroundColors: localizedBackgroundColors,
-			defaultTableProperties: this._defaultTableProperties
+			defaultTableProperties: this._defaultTableProperties,
+			colorPickerConfig: hasColorPicker ? ( config.colorPicker || {} ) : false
 		} );
 		const t = editor.t;
 
@@ -355,7 +357,7 @@ export default class TablePropertiesUI extends Plugin {
 		const editor = this.editor;
 		const viewDocument = editor.editing.view.document;
 
-		if ( !getTableWidgetAncestor( viewDocument.selection ) ) {
+		if ( !getSelectionAffectedTableWidget( viewDocument.selection ) ) {
 			this._hideView();
 		} else if ( this._isViewVisible ) {
 			repositionContextualBalloon( editor, 'table' );

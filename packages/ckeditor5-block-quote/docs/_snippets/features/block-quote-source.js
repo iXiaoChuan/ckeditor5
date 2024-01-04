@@ -5,8 +5,8 @@
 
 /* globals window */
 
-import { CKBox } from '@ckeditor/ckeditor5-ckbox';
-import { PictureEditing, ImageResize, AutoImage } from '@ckeditor/ckeditor5-image';
+import { CKBox, CKBoxImageEdit } from '@ckeditor/ckeditor5-ckbox';
+import { PictureEditing, ImageInsert, ImageResize, AutoImage } from '@ckeditor/ckeditor5-image';
 import { LinkImage } from '@ckeditor/ckeditor5-link';
 import { CS_CONFIG } from '@ckeditor/ckeditor5-cloud-services/tests/_utils/cloud-services-config';
 
@@ -17,16 +17,18 @@ ClassicEditor.defaultConfig = {
 	plugins: ClassicEditor.builtinPlugins.concat( [
 		PictureEditing,
 		ImageResize,
+		ImageInsert,
 		AutoImage,
 		LinkImage,
-		CKBox
+		CKBox,
+		CKBoxImageEdit
 	] ),
 	cloudServices: CS_CONFIG,
 	toolbar: {
 		items: [
 			'undo', 'redo', '|', 'heading',
 			'|', 'bold', 'italic',
-			'|', 'link', 'uploadImage', 'insertTable', 'blockQuote', 'mediaEmbed',
+			'|', 'link', 'insertImage', 'insertTable', 'blockQuote', 'mediaEmbed',
 			'|', 'bulletedList', 'numberedList', 'outdent', 'indent'
 		]
 	},
@@ -35,8 +37,12 @@ ClassicEditor.defaultConfig = {
 			top: window.getViewportTopOffsetConfig()
 		}
 	},
+	ckbox: {
+		allowExternalImagesEditing: [ /^data:/, 'origin' ],
+		forceDemoLabel: true
+	},
 	image: {
-		toolbar: [ 'imageTextAlternative' ]
+		toolbar: [ 'toggleImageCaption', 'imageTextAlternative', 'ckboxImageEdit' ]
 	}
 };
 

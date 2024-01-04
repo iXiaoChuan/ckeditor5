@@ -15,7 +15,7 @@ ClassicEditor
 				'undo', 'redo', '|', 'heading',
 				'|', 'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor',
 				'|', 'bold', 'italic', 'underline', 'strikethrough',
-				'|', 'link', 'uploadImage', 'insertTable', 'mediaEmbed',
+				'|', 'link', 'insertImage', 'insertTable', 'mediaEmbed',
 				'|', 'alignment',
 				'|', 'bulletedList', 'numberedList', 'outdent', 'indent'
 			]
@@ -25,6 +25,10 @@ ClassicEditor
 				top: window.getViewportTopOffsetConfig()
 			}
 		},
+		ckbox: {
+			allowExternalImagesEditing: [ /^data:/, 'origin' ],
+			forceDemoLabel: true
+		},
 		image: {
 			toolbar: [
 				'imageStyle:inline',
@@ -32,7 +36,9 @@ ClassicEditor
 				'imageStyle:breakText',
 				'|',
 				'toggleImageCaption',
-				'imageTextAlternative'
+				'imageTextAlternative',
+				'|',
+				'ckboxImageEdit'
 			]
 		},
 		heading: {

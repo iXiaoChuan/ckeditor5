@@ -75,7 +75,12 @@ export { default as NoOperation } from './model/operation/nooperation';
 export { transformSets } from './model/operation/transform';
 
 // Model.
-export { default as DocumentSelection, type DocumentSelectionChangeRangeEvent } from './model/documentselection';
+export {
+	default as DocumentSelection,
+	type DocumentSelectionChangeRangeEvent,
+	type DocumentSelectionChangeMarkerEvent,
+	type DocumentSelectionChangeAttributeEvent
+} from './model/documentselection';
 export { default as Range } from './model/range';
 export { default as LiveRange, type LiveRangeChangeRangeEvent } from './model/liverange';
 export { default as LivePosition } from './model/liveposition';
@@ -92,7 +97,7 @@ export type { Marker } from './model/markercollection';
 export type { default as Batch } from './model/batch';
 export type { default as Differ, DiffItem, DiffItemAttribute, DiffItemInsert, DiffItemRemove } from './model/differ';
 export type { default as Item } from './model/item';
-export type { default as Node } from './model/node';
+export type { default as Node, NodeAttributes } from './model/node';
 export type { default as RootElement } from './model/rootelement';
 export type {
 	default as Schema,
@@ -138,7 +143,7 @@ export { default as ViewRawElement } from './view/rawelement';
 export { default as ViewUIElement } from './view/uielement';
 export { default as ViewDocumentFragment } from './view/documentfragment';
 export { default as ViewTreeWalker, type TreeWalkerValue as ViewTreeWalkerValue } from './view/treewalker';
-export type { default as ViewElementDefinition } from './view/elementdefinition';
+export type { default as ViewElementDefinition, ElementObjectDefinition } from './view/elementdefinition';
 export type { default as ViewDocumentSelection } from './view/documentselection';
 export { default as AttributeElement } from './view/attributeelement';
 export type { default as ViewItem } from './view/item';
@@ -156,6 +161,7 @@ export { default as ClickObserver } from './view/observer/clickobserver';
 export { default as DomEventObserver } from './view/observer/domeventobserver';
 export { default as MouseObserver } from './view/observer/mouseobserver';
 export { default as TabObserver } from './view/observer/tabobserver';
+export { default as FocusObserver } from './view/observer/focusobserver';
 
 export { default as DowncastWriter } from './view/downcastwriter';
 export { default as UpcastWriter } from './view/upcastwriter';

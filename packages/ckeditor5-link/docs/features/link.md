@@ -1,11 +1,12 @@
 ---
 title: Link
+meta-title: Links | CKEditor 5 Documentation
 category: features
 ---
 
 {@snippet features/build-link-source}
 
-The link feature lets you insert hyperlinks into your content and provides a UI to create and edit them. Thanks to the [autolink](#autolink-feature) plugin, typed or pasted URLs and e-mail addresses automatically turn into working links.
+The link feature lets you insert hyperlinks into your content and provides a UI to create and edit them. Thanks to the [autolink](#autolink-feature) plugin, typed or pasted URLs and email addresses automatically turn into working links.
 
 ## Demo
 
@@ -19,15 +20,15 @@ Use the link toolbar button {@icon @ckeditor/ckeditor5-link/theme/icons/link.svg
 
 ## Typing around links
 
-CKEditor 5 allows for typing both at the inner and outer boundaries of links to make editing easier for the users.
+CKEditor&nbsp;5 allows for typing both at the inner and outer boundaries of links to make editing easier for the users.
 
 **To type inside a link**, move the caret to its (start or end) boundary. As long as the link remains highlighted (by default: blue), typing and applying formatting will be done within its boundaries:
 
-{@img assets/img/typing-inside.gif 770 The animation showing typing inside the link in CKEditor 5 rich text editor.}
+{@img assets/img/typing-inside.gif 770 The animation showing typing inside the link in CKEditor&nbsp;5 rich text editor.}
 
 **To type before or after a link**, move the caret to its boundary, then press the Arrow key (<kbd>←</kbd> or <kbd>→</kbd>) away from the link once. The link is no longer highlighted and whatever text you type or formatting you apply will not be enclosed by the link:
 
-{@img assets/img/typing-before.gif 770 The animation showing typing before the link in CKEditor 5 rich text editor.}
+{@img assets/img/typing-before.gif 770 The animation showing typing before the link in CKEditor&nbsp;5 rich text editor.}
 
 ## Custom link attributes (decorators)
 
@@ -92,7 +93,7 @@ Each decorator definition must have a unique name. In the case of [manual decora
 
 #### Adding `target` and `rel` attributes to external links
 
-A very common use case for (automatic) link decorators is adding `target="_blank"` and `rel="noopener noreferrer"` attributes to all external links in the document. A dedicated {@link module:link/linkconfig~LinkConfig#addTargetToExternalLinks `config.link.addTargetToExternalLinks`} configuration has been created for that purpose. When this option is set to `true`, all links starting with `http://`, `https://` or `//` are "decorated" with `target` and `rel` attributes.
+A common use case for (automatic) link decorators is adding the `target="_blank"` and `rel="noopener noreferrer"` attributes to all external links in the document. A dedicated {@link module:link/linkconfig~LinkConfig#addTargetToExternalLinks `config.link.addTargetToExternalLinks`} configuration has been created for that purpose. When you set this option to `true`, all links starting with `http://`, `https://`, or `//` are "decorated" with `target` and `rel` attributes.
 
 ```js
 ClassicEditor
@@ -100,7 +101,7 @@ ClassicEditor
 		link: {
 			addTargetToExternalLinks: true
 		}
-		// More of editor's config.
+		// More of the editor's configuration.
  		// ...
 	} )
 	.then( /* ... */ )
@@ -124,7 +125,7 @@ ClassicEditor
 				}
 			}
 		}
-		// More of editor's config.
+		// More of the editor's configuration.
  		// ...
 	} )
 	.then( /* ... */ )
@@ -148,7 +149,7 @@ ClassicEditor
 				}
 			}
 		}
-		// More of editor's config.
+		// More of the editor's configuration.
  		// ...
 	} )
 	.then( /* ... */ )
@@ -169,7 +170,7 @@ ClassicEditor
 		link: {
 			defaultProtocol: 'http://'
 		}
-		// More of editor's config.
+		// More of the editor's configuration.
  		// ...
 	} )
 	.then( /* ... */ )
@@ -202,7 +203,7 @@ ClassicEditor
 				}
 			}
 		}
-		// More of editor's config.
+		// More of the editor's configuration.
  		// ...
 	} )
 	.then( /* ... */ )
@@ -242,7 +243,7 @@ ClassicEditor
 				}
 			}
 		}
-		// More of editor's config.
+		// More of the editor's configuration.
  		// ...
 	} )
 	.then( /* ... */ )
@@ -317,7 +318,7 @@ The package provides a plugin for {@link module:link/linkimage~LinkImage linking
 Links are represented in the {@link module:engine/model/model~Model model} using the `linkHref` attribute. [Manual link decorators](#adding-attributes-to-links-using-the-ui-manual-decorators) are represented in the model using text attributes corresponding to their names, as configured in {@link module:link/linkconfig~LinkConfig#decorators `config.link.decorators`}.
 
 <info-box>
-	We recommend using the official {@link framework/development-tools#ckeditor-5-inspector CKEditor 5 inspector} for development and debugging. It will give you tons of useful information about the state of the editor such as internal data structures, selection, commands, and many more.
+	We recommend using the official {@link framework/development-tools/inspector CKEditor&nbsp;5 inspector} for development and debugging. It will give you tons of useful information about the state of the editor such as internal data structures, selection, commands, and many more.
 </info-box>
 
 ## Contribute
